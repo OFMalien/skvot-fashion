@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Великий курс про фешн - Skvot | База знань та гайд</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-link.active {
+            background-color: rgb(238 242 255);
+            border-color: rgb(199 210 254);
+        }
+        .dark .nav-link.active {
+            background-color: rgba(49, 46, 129, 0.4);
+            border-color: rgb(67 56 202);
+        }
+        .locked-hidden { display: none !important; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen">
+    <!-- Access Gate Screen -->
+    <div id="authGate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-100 dark:bg-slate-950 p-4">
+        <div class="max-w-md w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-xl text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-4 border border-indigo-100 dark:border-indigo-900/50">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Fashion Brand Master Guide</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Матеріали курсу доступні лише за посиланням або персональним ключем.</p>
+            <form id="authForm" class="space-y-4">
+                <div>
+                    <input type="password" id="authKeyInput" placeholder="Введіть ключ доступу" class="w-full px-4 py-2.5 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <p id="authError" class="text-xs text-rose-500 mt-2 hidden">Невірний ключ доступу. Спробуйте ще раз.</p>
+                </div>
+                <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-colors shadow-sm shadow-indigo-500/30">
+                    Відкрити матеріали
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Course Application -->
+    <div id="courseApp" class="locked-hidden">
+    <!-- Top Header -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-black text-base shadow-sm shadow-indigo-500/30">F</span>
+                <div>
+                    <h1 class="text-base font-bold text-slate-900 dark:text-white leading-none">Fashion Brand Master Guide</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Повний конспект та практикум курсу Skvot</p>
+                </div>
+            </div>
+
+            <!-- Search & Actions -->
+            <div class="flex items-center gap-3">
+                <div class="relative w-48 sm:w-72">
+                    <input type="text" id="searchInput" placeholder="Пошук по темах і текстах..." class="w-full pl-9 pr-4 py-1.5 text-xs rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+
+                <!-- Dark mode toggle -->
+                <button id="themeToggle" class="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Змінити тему">
+                    <svg id="moonIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="sunIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Sidebar Navigation -->
+            <aside class="lg:col-span-4 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2 space-y-1.5 custom-scrollbar">
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 py-2">
+                    Зміст та розділи
+                </div>
+                <a href="#01-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">01. ДНК та позиціонування</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">ДНК, місія, архетипи брендів та сегментація ЦА</span>
+        </a>
+<a href="#03-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">03. Створення бізнес-плану</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Структура бізнес-плану та дорожня карта запуску</span>
+        </a>
+<a href="#05-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">05. Фінанси та право</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Собівартість, ціноутворення, Cash Flow та юридичні форми</span>
+        </a>
+<a href="#06-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">06. Створення колекції</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Асортиментна матриця, квадрат Цвіккі, дропи</span>
+        </a>
+<a href="#08-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">08. Виробництво та підрядники</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Кейс MustHave: власний цех, аутсорс, строки тканин, QC</span>
+        </a>
+<a href="#11-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">11. Стратегія просування</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Tone of Voice, 3 типи зйомок, інфлюенсери, воронка Meta Ads</span>
+        </a>
+<a href="#13-14-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">13-14. Дистрибуція та експорт</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Кейс FROLOV: баєри в Парижі, лайн-шити, e-commerce, митниця</span>
+        </a>
+<a href="#16-18-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">16-18. Операційка та тренди</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Кризи росту Грейнера, кейс Шепелик, Sustainability, PLNGNS</span>
+        </a>
+<a href="#-" class="nav-link group flex flex-col p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Практикум: Домашні завдання</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Чек-листи та шаблони для всіх 5 практичних ДЗ</span>
+        </a>
+                
+                <div class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 px-3">
+                    <div class="bg-indigo-50/60 dark:bg-indigo-950/40 rounded-xl p-4 border border-indigo-100 dark:border-indigo-900/50">
+                        <h4 class="text-xs font-bold text-indigo-900 dark:text-indigo-200">Автономна база знань</h4>
+                        <p class="text-[11px] text-indigo-700 dark:text-indigo-300 mt-1 leading-relaxed">
+                            Цей файл повністю автономний: працює локально без підключення до мережі та готовий до публікації на GitHub Pages.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:col-span-8 min-w-0" id="mainContent">
+                
+        <section id="01-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">ДНК, місія, архетипи брендів та сегментація ЦА</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 1. Концепція та позиціонування</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Конспекты-заметки по материалам занятия (своими словами, сжато). Оригиналы - по ссылкам.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. С чего начинается fashion бренд</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/fashion-39e187705a1b8083aba0d6fdc4f60024" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">З чого починається fashion бренд</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Концепция бренда - это основа, вокруг которой строится всё. Три элемента: миссия, видение, ценности.</li>
+<li class='leading-relaxed'>Дальше - идея бренда и "бренд как человек" (персонификация характера).</li>
+<li class='leading-relaxed'>Главное правило - последовательность: всё, что делает бренд, раскрывает его суть и не противоречит ей. Серьёзный минималистичный бренд не может резко начать снимать шуточные тренды - это ломает характер. Оставаться собой, даже когда тренды меняются.</li>
+</ul>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Архетипы брендов</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/34f187705a1b8022ab30fe957b6bbccd" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Архетипи брендів</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>12 архетипов (классическая модель Юнга/Марк-Пирсон) в fashion-примерке:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Невинный - наивность, чистота, простота; нежные "сказочные" бренды.</li>
+<li class='leading-relaxed'>Исследователь - свобода, поиск, независимость; инновации, минимализм.</li>
+<li class='leading-relaxed'>Мудрец - знание, глубина, смыслы; концептуальные, философские бренды.</li>
+<li class='leading-relaxed'>Герой - сила, вызов, преодоление; спортивные, функциональные.</li>
+<li class='leading-relaxed'>Бунтарь - протест, разрушение правил; панк, антисистема.</li>
+<li class='leading-relaxed'>Маг - трансформация, мистика; арт-бренды, алхимия.</li>
+<li class='leading-relaxed'>Свой парень - простота, близость; повседневность, легко адаптируется в гардероб.</li>
+<li class='leading-relaxed'>Любовник - чувственность, телесность, красота.</li>
+<li class='leading-relaxed'>Шут - ирония, игра, юмор; принты, дофаминовые вещи.</li>
+<li class='leading-relaxed'>Опекун - забота, безопасность, тепло; slow fashion, этика.</li>
+<li class='leading-relaxed'>Творец - креатив, самовыражение; глубоко дизайнерские бренды.</li>
+<li class='leading-relaxed'>Правитель - статус, контроль, роскошь; luxury.</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Целевая аудитория и портрет клиента (он же конспект "Позиціонування бренду" - та же страница)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b800aae41c7705a9b8175" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Цільова аудиторія та портрет клієнта</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Зачем анализ ЦА (4 причины):</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Нужный продукт: делать то, что востребовано, а не только нравится вам (пример: Demi-Denims Ksenia Schnaider родились из запроса аудитории на необычный силуэт).</li>
+<li class='leading-relaxed'>Правильный прайсинг: цена привязана к доходу ЦА и сегменту; масмаркет-бренд за $300 не поймут.</li>
+<li class='leading-relaxed'>Эффективное продвижение: у каждой группы своё медиапространство.</li>
+<li class='leading-relaxed'>Без портрета - хаос и слив ресурсов.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Сегментация (4 метода):</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Демографическая - базовая и поверхностная (возраст, пол, доход, город).</li>
+<li class='leading-relaxed'>Психографическая - глубокая: характер, стиль жизни, ценности, эстетический и социальный статус. Объясняет, ПОЧЕМУ покупают.</li>
+<li class='leading-relaxed'>Поведенческая - привычки покупки: как часто, где, ориентация на тренды/ключевые вещи, роль скидок.</li>
+<li class='leading-relaxed'>Географическая - культура страны, сезонность, ожидания (функциональность vs эстетика), средний чек.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Ключевые принципы:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Описывать не "девушку 25 лет из большого города", а КОМЬЮНИТИ: общие бренды, медиа, источники вдохновения, раздражители.</li>
+<li class='leading-relaxed'>Эмоциональная привязка: что человек хочет получить - уникальность, принадлежность к сообществу, поддержку ценностей, дофамин. От этого зависит и стиль контента.</li>
+<li class='leading-relaxed'>Инсайты нельзя выдумывать. Где искать: комментарии под постами, директ, отзывы (свой сайт + маркетплейсы), тренды TikTok/Pinterest, прямые разговоры с клиентами, вебаналитика (клики, корзины).</li>
+<li class='leading-relaxed'>Реальная vs идеальная аудитория часто не совпадают (хотели карьеристок из мегаполисов - покупают мамы в декрете). Зафиксировать разрыв, найти причину, строить стратегию.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Исследования:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Количественные: короткие вопросы, фиксированные варианты, большие выборки, результат в процентах. Пример: 60% носят пуховик как жилетку - значит, развивать трансформации.</li>
+<li class='leading-relaxed'>Качественные: глубинные интервью 20-40 минут в Zoom, небольшое число людей, мотивация - сертификат/бонус. Можно сделать ежеквартальным стандартом (чаепития с постоянными клиентами).</li>
+<li class='leading-relaxed'>Правило вопросов: спрашивать только то, чего нельзя узнать самому. Вопросы: как узнали о бренде, как решались на покупку, что нравится, что вызывает сомнения, что разочаровало, какие проблемы решает продукт, в каких ситуациях носится, что раздражает в аналогах на рынке, где/в каком настроении носится.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Сегментация по потребностям (опыт Шепелик):</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Функциональные: тепло, удобно, практично, вписывается в гардероб; важны инфо о составе/уходе и постпродажный сервис.</li>
+<li class='leading-relaxed'>Эмоциональные: трансформация, уверенность, "быть особой"; важны упаковка, вау-сервис, вдохновляющий контент.</li>
+<li class='leading-relaxed'>Социальные: "как я выгляжу для других" - статус, принятие в среде; важны инфлюенсеры, где продаётся бренд, позиция по общественным вопросам.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Лайфстайл-сегментация: ритм жизни, роли (фрилансер+мама+путешественница), сценарии использования, внутреннее состояние, отношение к внешности.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Типы клиентов по принятию решения: рациональные (холодные, сравнивают рынок), эмоциональные (быстро, по рекомендации), ценностные (долго наблюдают, покупают за философию), фанаты (следят годами без покупок ИЛИ покупают каждую новинку). Этапы: новый / существующий / постоянный - удержание всегда дешевле привлечения.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Пример портрета (Шепелик): женщина 20-30, "апостол украинской культуры", читает, путешествует, креативная индустрия, гуляет, дети, готовит. Покупает после больших рабочих достижений; решение лёгкое, но с правилом "надену минимум 5 раз". Берёт вещи с украинской идентичностью или дофаминовые.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Для малого бизнеса (критично): конкурировать ценой нельзя - нужно точно знать, какую потребность закрываешь. Продаёшь ОЩУЩЕНИЕ, не продукт: рынок одежды перенасыщен, никто не покупает "чтобы прикрыться" - покупают, чтобы быть услышанным, подчеркнуть статус, добавить уверенности. Портреты надо обновлять - аудитория меняется и устаревает.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Формирование идеи бренда</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80eea891ccfd778df763" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Формування ідеї бренду</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Масштаб: мировая fashion-индустрия ~$1.8 трлн, одежда ~2% мировой экономики. Рынок насыщен.</li>
+<li class='leading-relaxed'>Бренд - не название/лого/продукт, а совокупность ассоциаций и эмоций в голове потребителя. Производитель и торговая сеть - ещё не бренд.</li>
+<li class='leading-relaxed'>Атрибуты бренда: имя, лого и визуальная айдентика, Tone of Voice, ценности, обещание бренда, позиционирование, ассоциации/эмоциональный код, клиентский опыт (CX).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Разборы примеров:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Jacquemus: личный бренд дизайнера, сторителлинг (имя матери, детство на юге Франции), "молодой люкс без пафоса". Сначала маркетинг и личный бренд, потом продукт.</li>
+<li class='leading-relaxed'>Ganni: отказ от холодного скандинавского минимализма в пользу жизнерадостности; комьюнити #GanniGirls (в центре - настроение и самоидентификация, не одежда); Feel Good Fashion, общение "как с подругами".</li>
+<li class='leading-relaxed'>Bottega Veneta: "тихая сила", мастерство, фирменное плетение и зелёный; сила без логотипов; специальное отсутствие соцсетей = FOMO и эксклюзивность.</li>
+<li class='leading-relaxed'>Uniqlo: "одежда, которая упрощает жизнь" - функциональность, базовость, технологии, а не тренды.</li>
+<li class='leading-relaxed'>GUNIA Project: ремесленный украинский бренд; ЦА 25-45, интересуется искусством и этнонаследием; закрывает потребность в эмоциональных предметах и поддержке ремесла через современную эстетику.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>7 шагов формирования концепции бренда:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Анализ рынка и конкурентов (ниши, тренды).</li>
+<li class='leading-relaxed'>Определение ЦА: классически (пол/возраст/география/доход) или через Job-to-be-Done (какую "работу" выполняет одежда для клиента).</li>
+<li class='leading-relaxed'>УТП: что отличает (дизайн, технология, сторителлинг, маркетинг).</li>
+<li class='leading-relaxed'>Ключевые ценности и миссия (Patagonia - защита планеты; Kachorovska - удобные женские каблуки).</li>
+<li class='leading-relaxed'>Позиционирование - чёткое место в сознании клиента.</li>
+<li class='leading-relaxed'>ToV и визуальная идентичность - консистентная, не меняется кардинально каждый сезон.</li>
+<li class='leading-relaxed'>Тестирование и коррекция: пилотные коллекции, поп-апы, анализ реакции.</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Четыре столпа идеи бренда: Смысл (миссия - для кого и какую проблему решаем), Продукт (уникальность в тканях/пошиве/технологиях), Опыт (сервис, атмосфера ритейла, впечатления от контента), Доказательство (артефакты: конструктив, сертификаты, патенты, прозрачная себестоимость, отзывы).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Маркетинговые vs продуктовые бренды:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Маркетинговые: спрос через культурный капитал, нарратив, дефицит, коллабы, дропы (Supreme, Ruslan Baginskiy). Риск: слабая продуктовая уникальность, выгорание маржинальности.</li>
+<li class='leading-relaxed'>Продуктовые: рост через ощутимую пользу продукта (ткани, технологии, долговечность), маркетинг усиливает (Hermès, Bottega Veneta, Kachorovska).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Макротренды: поляризация рынка (люкс держится; 82% потребителей готовы платить за вещи, дающие эмоциональный баланс и уют), жёсткие регуляции устойчивости в ЕС (страница обрывается на этом, продолжение в оригинале).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>5. Анализ конкурентов</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80e49fa9e2132d270e41" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Аналіз конкурентів</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Анализ рынка спасает от хаоса: отвечает, что делать, когда, для кого и в каком объёме. Перед запуском - оценка рынка конкретной страны (культура потребления сильно различается).</li>
+<li class='leading-relaxed'>Сегменты рынка: Luxury, Contemporary, Premium, Mass-market, Ultra-fashion (ультрабыстрая мода - растёт в мире; в Украине ниша пустует из-за себестоимости).</li>
+<li class='leading-relaxed'>Правило позиционирования: визуальный код, коммуникации и подача бренда должны соответствовать ценовому сегменту. Премиум не может выглядеть как масмаркет.</li>
+<li class='leading-relaxed'>Тренды: макро (раз в ~10 лет: устойчивость, технологичность, ИИ, гендерная текучесть) - фундамент бренда; микро (сезонные цвета/силуэты); виральные (растут и умирают быстро - опасный фундамент).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Как анализировать конкурентов (опыт Ksenia Schnaider) - непрерывный процесс, занимается sales-команда:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Предложение и цены (держаться ниши).</li>
+<li class='leading-relaxed'>Каналы дистрибуции: соцсети + маркетплейсы (Farfetch, Zalando).</li>
+<li class='leading-relaxed'>Спрос через sold-out и скидки: быстро выкупают - высокий спрос; массовые скидки - категория просела.</li>
+<li class='leading-relaxed'>Пресса и отзывы критиков.</li>
+<li class='leading-relaxed'>Инструмент: сравнительная таблица (Google Sheets) - конкурент, особенности товара, цены, скорость продаж, скидки, маркетинг (инфлюенсеры, стиль съёмок).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Отзывы на конкурентов: люди публично критикуют (посадка, размерная сетка, качество). Слабости конкурента = твои сильные стороны - так перетягиваешь его недовольных клиентов.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Зачем при масштабировании: ритейлер всегда спросит "кто ваши конкуренты" - чтобы понять позиционирование и поставить бренд на полку рядом с правильными соседями.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Успешная ниша = пересечение трёх факторов: реальный спрос + ограниченная конкуренция + уникальная компетенция (то, что умеешь лучше всех).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>6. Уникальность и УТП</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80819765c22eec0ec567" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Унікальність та ціннісна пропозиція</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Уникальность - не "быть не таким как все", а свой голос, чёткая позиция, смысл и личная оптика на мир.</li>
+<li class='leading-relaxed'>УТП = не описание характеристик, а описание конечного результата для человека. Примеры: Nike продаёт веру в свои силы, Aesop - ритуал и заботу, Patagonia - ответственность и экологические действия, Kseniaschnaider - устойчивый подход и индивидуальность (не джинсы).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Из чего складывается ценность бренда: качество/силуэты/цвета/материалы; история создания и люди; экспертиза мастеров; эмоции от контакта с маркой; доверие (честность); последовательность (единый голос во всём). Трансляция: визуальный язык (съёмки, лукбуки, кампании, сайт), сторителлинг, качество, сервис, стратегические коллаборации.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>На чём может строиться УТП: технология; конструкция и силуэт (фирменные формы); материалы (апсайклинг); локальное производство; философия, стиль, клиентский опыт.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>4 источника уникальности (идут изнутри, не выдумываются):</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Личный бэкграунд основателя: кто ты, откуда, что тебя сформировало.</li>
+<li class='leading-relaxed'>Ремесло и навыки: что умеешь делать лучше всех (крой, посадка, цвет, драпировка, монохром).</li>
+<li class='leading-relaxed'>Философия и видение: почему делаешь продукт именно так (пример: "всё использованное может быть использовано повторно").</li>
+<li class='leading-relaxed'>Наблюдение за рынком: какие ниши заняты, где свободное пространство.</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>3 элемента уникальности: Продукт (характер и узнаваемость), Коммуникации (язык бренда - иначе уникальность не считается рынком), Идея (глубинный смысл).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Стратегическая рекомендация: строй УТП на том, что трудно скопировать. Технологическая фишка рано или поздно будет скопирована. Труднее всего повторить эмоции, сторителлинг и визуальный язык.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Теория ценности (CVP): ценность относительна - зависит от клиента и момента. Маркетинг - борьба не продуктов, а их восприятий. Ценностное предложение должно быть динамичным и решать актуальные проблемы клиента.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>10 столпов ценности fashion-бренда сегодня (первые 5 из конспекта): иммерсивный клиентский опыт; персонализация и hi-touch сервис (приватные примерки, стилист, кастомизация, консьерж); принадлежность к комьюнити ("клубы ценностей"); ремесло и лимитированные серии; прозрачность происхождения (traceability) - продолжение в оригинале.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>7. Как создавались большие бренды</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80e0b1dddd5d7171cb02" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Як створювалися великі бренди</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Многое пересекается с конспектом "Формування ідеї бренду" (те же кейсы Jacquemus, Ganni, Bottega, Uniqlo). Новое:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Различие моделей: производитель (просто делает продукт), торговая сеть (канал продаж), Instagram-магазин (площадка быстрых продаж), бренд (целостная система ценностей в эмоциях клиента).</li>
+<li class='leading-relaxed'>Кейс разработки идеи на примере GUNIA: для кого (25-45 с доходом, ценят ремесло и культуру), потребность (уникальная вещь с историей, поддержка наследия), уникальность (ручная работа, фольклор в современной эстетике, лимитки как арт-объекты), эмоции (гордость, тепло, причастность).</li>
+<li class='leading-relaxed'>Фреймворк запуска и масштабирования: 1) реальность продукта - есть техно/функциональное преимущество? строй от продукта (product-led), нет - ставь на бренд-код, дропы и маркетинг; 2) юнит-экономика - маржинальность и окупаемость отдельно по каждому каналу ещё на старте; 3) канальная матрица - DTC, маркетплейсы, поп-апы, селективный опт, эксклюзивные капсулы; 4) регуляции - заранее готовить сертификаты и патенты (особенно ЕС); 5) структура сторителлинга - происхождение материалов, герой бренда, обещание опыта, продуктовый манифест (5-7 стандартов качества производства).</li>
+<li class='leading-relaxed'>Тренд: работает синергия - культурный смысл + ощутимая польза продукта. Рынок поляризуется: крафтовый люкс и быстрые эмоциональные тренды растут, середина проседает. 52% покупателей решаются после физического контакта с вещью.</li>
+</ul>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>8. Создание личности бренда</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b809dbe8bc0f56b324777" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Створення особистості бренду</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Метод: представь бренд реальным человеком - настолько чётко, чтобы "увидеть" его рядом с собой в комнате. Вопросы: сколько лет, пол, характер и темперамент, поведение с людьми и в сложных ситуациях, стиль жизни и отдых, где живёт, музыка/книги/фильмы.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Важно: личность бренда - это НЕ портрет ЦА. Бренд может быть для клиента другом, коллегой, наставником, родителем.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Архетипы по Юнгу: выбрать 1 главный + 1-2 дополнительных. Примеры: Nike - Герой, Disney - Маг, Balenciaga времён Демны - Бунтарь, Lego - Творец, Burberry - Правитель, OLX/Diadora - Славный малый, Skittles - Блазень. Кейс Шепелик: Невинный + Маг + Творец - весёлый харизматичный парень 20-25, увлекается шитьём и садоводством, шутит и помогает.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Точки контакта (6 зон) - личность бренда должна целостно считываться в каждой:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Продукт: ткани, форма, фурнитура, кофры, пылевики, бирки с уходом.</li>
+<li class='leading-relaxed'>Визуал и коммуникация до покупки: съёмки, лукбуки, кампании, типаж моделей, тексты и ответы в комментариях.</li>
+<li class='leading-relaxed'>Соцсети и цифровое: сайт, баннеры, email, push, Instagram/TikTok/Pinterest, маркетплейсы.</li>
+<li class='leading-relaxed'>Физический опыт: шоурум, витрина, выкладка, свет, запах, музыка, зеркала, примерочные, команда.</li>
+<li class='leading-relaxed'>Упаковка и постпurchase: коробка, пакет, налипки, листовки, подарки, инструкция по уходу - "точка контакта, которая бесплатно генерирует контент".</li>
+<li class='leading-relaxed'>Социальный контекст: медиа, инфлюенсеры, UGC, ивенты, коллабы, сарафан, комьюнити + эмоциональный уровень (история, ценности, позиция, личность основателя).</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Кейс-деталь: шоурум Шепелика зимой пахнет домашними пирогами с яблоками и корицей, летом - сухой липой (архетип Невинного - тёплые детские воспоминания).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>ToV-документ: зафиксировать правила языка в единый гайдлайн для менеджеров; готовые шаблоны фраз для сценариев (приветствие, подтверждение заказа, реквизиты, прощание, сбор отзыва); на каждый сценарий 2-3 варианта (чтобы не было эффекта копипаста). Эмоциональный якорь почти бесплатен: кейс парфюмерного бренда с фирменным прощанием "Почуємось" - клиентка нашла бренд заново по одному этому слову.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>9. Ниші fashion индустрии</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/fashion-39e187705a1b803a87c8fcd2ff06eda2" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Ніші fashion індустрії</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Модный бренд - это не только "шить базовые худи". Направления:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Именной дизайнерский бренд: вокруг видения человека (Dior, YSL; украинские Litkovska, Bevza). Базовые вещи без идеи не взлетят - нужен свой визуальный код, описываемый парой слов: Bevza - минимализм и белый; Litkovska - крафт и украинское наследие; Poustovit - шёлк и цветочные принты; Gudu - авангард; Gunia - украинский наив и яркие цвета.</li>
+<li class='leading-relaxed'>Специализированные ниши: спорт/streetwear (Riot Division), только верхняя одежда (Article), только вечерняя (Cultnaked).</li>
+<li class='leading-relaxed'>Свадебная и вечерняя мода: украинский свадебный рынок - один из крупнейших в Европе, до 20% свадебных платьев Европы сделаны в Украине, почти половина валютной выручки лёгкой промышленности. Модель: стабильные деньги свадебки + параллельные вечерние линейки. Основа - ручные техники, которые не заменить конвейером.</li>
+<li class='leading-relaxed'>Аксессуары: головные уборы (Ruslan Baginskiy), обувь и сумки (Hvoya).</li>
+<li class='leading-relaxed'>Ювелирка: Guzema, Sova, Zarina. Домашний декор: Gunia и др.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Вызовы индустрии: зависимость от внешних факторов (политика, пошлины, логистика), операционный контроль 24/7 (генераторы во время блэкаутов), быстрая потеря актуальности - без новой идеи бренд мгновенно остывает. 12% трудоспособного населения планеты занято в fashion.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>10. Этапы построения fashion бренда</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/fashion-39e187705a1b804e83bfd56f6139bff6" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Етапи побудови fashion бренду</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Это не хаотичный творческий процесс, а последовательность бизнес-шагов:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Концепция, идея, уникальное ДНК: нужна сильная уникальная идея для масштабирования (монобренд шляп, авангард, праздничность - примеры Baginskiy, Margiela, D&G). Но не застревать на старте: ДНК кристаллизуется в работе (Шанель начинала с шляп и не знала про твидовый жакет и камелию).</li>
+<li class='leading-relaxed'>Тестирование образцов: технический тест (материалы, фурнитура, конструкторы на рынке?) + маркетинговый тест (образцы в реальной жизни, честный фидбек от "друзей друзей", а не родни; фото в соцсетях для первичного спроса; оценка стилистами). Золотое правило: развивай то, что приносит деньги (планировали пуховики, а разбирают шапки - делайте акцент на аксессуарах).</li>
+<li class='leading-relaxed'>Производство - приоритет над маркетингом: главная ошибка новичков - красивая съёмка и лого без стабильного производства. Кампейн "выстрелит" - сотни заказов, которые не сшить - репутация убита мгновенно. Производство должно быть готово к масштабу (заказ от стилиста звезды на 20 единиц за 2 недели; заказ универмага на 100 единиц в 3 цветах).</li>
+<li class='leading-relaxed'>Команда: не семейный проект ("мама - бухгалтер, сестра с айфоном - SMM"). С ростом: директор бренда, PR, SMM, таргетолог, бухгалтер, логист. С партнёром - юрист на старте: роли, коммуникация, доли прибыли, сценарий выхода из бизнеса. Онбординг и должностные с первого дня, план роста персонала проговаривать на первом интервью.</li>
+<li class='leading-relaxed'>Маркетинг, PR, визуал: продукт сам себя не продаст; fashion продаёт картинку - снимать на телефон нельзя. Инвестиции в профессиональные съёмки окупаются первыми продажами. PR: инфлюенсеры, глянец, инфоповоды.</li>
+<li class='leading-relaxed'>Ритейл и дистрибуция: молодому бренду не обязательно сразу свои магазины - партнёрство (конспект обрывается, продолжение в оригинале).</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>11. Инструкции занятия (практические инструменты)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'><a href="https://brave-protocol-da0.notion.site/34f187705a1b809295ede62df2373c94" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Методи аналізу цільової аудиторії</a>: 5 методов сегментации (демо/психо/поведенческая/гео/эмоционально-мотивационная). Портрет = максимально конкретная персона: имя (условное), город, профессия, какие бренды носит, какие медиа читает, что раздражает/вдохновляет, что ищет в моде, почему выберет вас. Инсайт = глубокое "почему", не "людям нравится деним", а "хочу покупать меньше, но лучше", "хочу быть уверенной, не выглядя слишком". Критерии инсайта: правдивый, конкретный, эмоциональный, полезный для продукта.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'><a href="https://brave-protocol-da0.notion.site/34f187705a1b8036a375e7cdd8065652" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Як сформувати цінності бренду</a>: 6 шагов - анализ внутренних факторов (ДНК, продукт, миссия) → анализ рынка/конкурентов → анализ клиентской базы → выбор 5-7 ключевых ценностей (уникальность + ожидания клиента + простота коммуникации) → формализация в таблицу (ценность / описание / примеры проявления / месседж / влияние на клиента) → проверка (отражают ли реальную практику; хватит ли на 2026-2027).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'><a href="https://brave-protocol-da0.notion.site/34f187705a1b80e4a920f5f8a14f080c" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Точки контакту бренду з клієнтом</a>: раскладка 7 зон касания (продукт, визуал, соцсети, физический опыт, упаковка и постпокупка, социальный контекст, эмоциональный уровень) - см. раздел 8.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'><a href="https://brave-protocol-da0.notion.site/34f187705a1b80f8a8e7f2b980347b21" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Аналіз ринку</a>: инструкция-заглушка с подразделами "где искать конкурентов" и "на что обращать внимание" (содержимое в подстраницах, основное дублируется в конспекте про конкурентов).</p>
+            </div>
+        </section>
+        
+        <section id="03-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Структура бізнес-плану та дорожня карта запуску</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 3. Створення бізнес-плану</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заметки по конспектам занятия (своими словами). Шаблон бизнес-плана: <a href="https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/3-file.xlsx" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">файл Excel</a> (скачан в папку файлы).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Что такое бизнес-план и зачем он нужен</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b804186fae98b6e1493fc" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Бізнес-план</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Суть: бизнес-план - не формальность, а инструмент мышления. "В бизнесе нет места иллюзиям - тут решают цифры, риски и реальные клиенты". Это дорожная карта от идеи до результата.</li>
+<li class='leading-relaxed'>Роль CEO в творческом бизнесе: разгрузить основателя от операционки и финансов; успех = синергия творческой стратегии (визуальный код, продукт) и финансово-структурной (цифры, процессы).</li>
+<li class='leading-relaxed'>Для кого: для себя (проверить реалистичность), для инвесторов/банков (доказательство продуманности), для партнёров и команды (согласование целей).</li>
+<li class='leading-relaxed'>Мерило качества: можешь объяснить бизнес-идею и модель заработка кому угодно за 2 минуты.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Структура бизнес-плана (6 блоков):</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Резюме: что предлагаем, для кого, как зарабатываем.</li>
+<li class='leading-relaxed'>Описание компании: суть, уникальность, миссия, оргструктура.</li>
+<li class='leading-relaxed'>Анализ рынка и конкурентов: не ограничиваться цифрами из Google-отчётов - лучшая аналитика собрана своими руками. Слабости конкурентов = где сразу стать лучше; их сильные стороны = что усиливать маркетингом. Кейс Kulakovsky: кожа боится пятен - бренд сразу кладёт в покупку набор для ухода и контакт сервис-партнёра по реставрации (снимает тревогу клиента).</li>
+<li class='leading-relaxed'>Маркетинг и продажи: PR усиливает узнаваемость образа, маркетинг создаёт спрос и ведёт к продажам. Чётко определить географию клиента - от этого зависят бюджеты (у Европы другие ценности и чеки). Рынок перенасыщен продуктом - клиент покупает ценности бренда, не просто одежду.</li>
+<li class='leading-relaxed'>Операционный план: кто, что, когда и какими ресурсами делает (команда, партнёры, оборудование, логистика, ежемесячные расходы).</li>
+<li class='leading-relaxed'>Финансовый план: стоимость запуска и удержания. Критично: закладывать в бюджет запуска первые 6 месяцев жизни бизнеса - спрос редко приходит в день один.</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Управление рисками:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Финансовые: кошторис операционного выживания минимум на полгода.</li>
+<li class='leading-relaxed'>Рыночные: два обязательных расчёта - сценарий А (точка безубыточности, месяц в ноль) и сценарий Б (сколько денег в резерве, чтобы полгода покрывать расходы и запустить следующий дроп, если первая коллекция продаётся медленно).</li>
+<li class='leading-relaxed'>Сценарное планирование: что делаешь, если рынок падает? Готов ли сменить сегмент (люкс → мидл/масс)? Что если появится сильный конкурент?</li>
+<li class='leading-relaxed'>Командные: даже с найманным CEO владелец обязан глубоко понимать процессы, финансы и стратегию - иначе уход топа = колапс.</li>
+</ul>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Этапы создания бизнес-плана</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80a89953decdb506e417" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Етапи створення бізнес-плану</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>ЦА: "продукт для всех" - главный сигнал опасности для стартапа. На запуске максимально сузить аудиторию (расширить успеешь потом). Портрет прописать в таблицу: возраст, семья, образование, музыка, еда, занятие, кумиры/инфлюенсеры, сериалы - это прямо кормит таргет, прайсинг и выбор инфлюенсеров.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Финансовая трезвость:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Главная ошибка новичков - сверхоптимизм: планируют плюс за 3 месяца, а безубыточность в реальности наступает за ~9.</li>
+<li class='leading-relaxed'>Деньги бизнеса - не твои личные: себестоимость остаётся внутри и идёт на следующие коллекции.</li>
+<li class='leading-relaxed'>Ежемесячная аналитика по отчётам, не по ощущениям.</li>
+<li class='leading-relaxed'>Всегда 3 сценария (оптимистичный/реалистичный/пессимистичный) + резерв 20-30% на непредвиденное.</li>
+<li class='leading-relaxed'>Прибыль на бумаге ≠ деньги на счету: ликвидность (способность покрывать текущие расходы) считать после первых 3 месяцев работы.</li>
+<li class='leading-relaxed'>Различать: доход, чистая прибыль, cash flow. Подушка минимум на 3 месяца всех расходов.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Команда:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Партнёрство вдвоём - юрист на старте, договор фиксирует: зоны ответственности, коммуникацию с внешним миром, проценты прибыли, сценарий и условия выхода из бизнеса (думать об этом заранее - норма).</li>
+<li class='leading-relaxed'>Для каждого сотрудника - онбординг и карточка обязанностей с первого дня.</li>
+<li class='leading-relaxed'>План роста обсуждать уже на первом интервью (лояльный сотрудник + заранее заложенный рост ФОТ в финансовом плане).</li>
+<li class='leading-relaxed'>Творцам: нельзя полностью перекладывать цифры на CEO - если человек уйдёт, будет колапс.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Маркетинг: продукт сам себя не продаст; маркетинг - это донесение ценностей и философии, результат которого продажи.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Бизнес-план - живой документ: пересматривать минимум раз в квартал; работающему бизнесу - новый план ежегодно.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Расчёт бизнес-плана (цифры)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80a99dd1c42ae5e6a0d3" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Розрахунок бізнес-плану</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>"План без цифр - просто мечта. Цифры без логики - иллюзия".</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>База:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Прибыль = общий доход - общие расходы. Из прибыли: минимум 30% в резерв/подушку, остальное на старте реинвестировать.</li>
+<li class='leading-relaxed'>Расходы: постоянные (аренда, базовые зарплаты, коммуналка) и переменные (сырьё, реклама, логистика, PR - зависят от объёмов).</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Метрики здоровья бизнеса (ежемесячно):</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Точка безубыточности (BEP): в штуках (сколько продать за месяц) и в деньгах (какая выручка нужна).</li>
+<li class='leading-relaxed'>Рентабельность: % чистой прибыли с каждой гривни.</li>
+<li class='leading-relaxed'>ROI: за какой срок окупятся стартовые вложения.</li>
+<li class='leading-relaxed'>Cash Flow: реальное движение денег, сколько физически на счету.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Себестоимость продукта:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Собівартість = сырьё + оплата времени мастера + упаковка + % инфляции (курс НБУ). Время изготовления одной единицы умножить на стоимость часа.</li>
+<li class='leading-relaxed'>Маркап (наценка): масмаркет 2.5-3.0 (работает только на больших объёмах каждого артикула), люкс 3.3 и выше (покрывает премиальную упаковку, подарки, PR, ивенты). Новому бренду для комфортного старта - маркап от 3.3.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>5 типовых финансовых ошибок:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Нереалистичные ожидания ("прибыль за 3 месяца").</li>
+<li class='leading-relaxed'>Игнор скрытых расходов: налоги, эквайринг, реклама, мелкие ремонты. Расчёт только "аренда + материалы" = кассовые разрывы.</li>
+<li class='leading-relaxed'>Нет запаса оборотки - самая частая причина закрытия (не на что закупить сырьё, задержки зарплат).</li>
+<li class='leading-relaxed'>Непроверенный спрос ("и так залетит").</li>
+<li class='leading-relaxed'>Нет плана Б (сменить маркетинг, переформатировать продукт, привлечь резервные инвестиции).</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Финальные советы: начни с малого, мысли масштабно; тестируй до вложений; контролируй цифры лично (рентабельность, ROI, BEP); обновляй план минимум раз в год.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Фандрайзинг и гранты</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://www.notion.so/34f187705a1b806b916df1d9a83d9fd2" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Фандрейзинг та подача на гранти</a> - страница закрыта от публичного просмотра, конспект недоступен. Дополнительный материал: <a href="https://www.culturepartnership.eu/ua/publishing/proposal-writing-course/vol-1" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Як підготуватися до написання гарної проєктної заявки (Culture Partnership)</a>.</p>
+            </div>
+        </section>
+        
+        <section id="05-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Собівартість, ціноутворення, Cash Flow та юридичні форми</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 5. Фінанси та юридичні аспекти</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заметки по конспектам занятия (своими словами). Часть разделов добирается - у Notion сработал лимит на частые открытия страниц, конспекты дополняются по мере доступа. Оригиналы - по ссылкам, шаблоны (Google Sheets) - в манифесте.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Себестоимость и ценообразование</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/34f187705a1b808ead33e61153272fda" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Собівартість та ціноутворення</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Главная мысль: "если ты не знаешь себестоимость - бизнес управляет тобой, а не ты бизнесом".</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>COGS (себестоимость реализованного товара) - всё, что входит в производство конкретной вещи: сырьё и материалы, фурнитура (пуговицы, молнии, лейблы), работа швейного цеха (оплатa за единицу), разработка (конструктор, технолог). Это часть ПЕРЕМЕННЫХ расходов - ничего не шьёшь, расходов нет.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Полная себестоимость - 7 компонентов:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Материалы: ткани, фурнитура, нитки, подкладка, бирки, упаковка, коробка, плёнка/стикеры.</li>
+<li class='leading-relaxed'>Производство: оплата швей, конструктор, техкрейсунки, контроль качества, прасование, пилотный образец.</li>
+<li class='leading-relaxed'>Амортизация оборудования (машины, оверлоки, парогенераторы) - частый пропущенный пункт!</li>
+<li class='leading-relaxed'>Логистика: доставка тканей, готовых изделий, таможенные платежи при импорте.</li>
+<li class='leading-relaxed'>Упаковка и снабжение: бирки, шоперы, инструкции по уходу.</li>
+<li class='leading-relaxed'>Потери производства: каждый крой = неиспользованная ткань. Ориентиры: 5-15% для простых вещей, 20-30% для сложных конструкций, до 40% для апсайклинга (это норма).</li>
+<li class='leading-relaxed'>Административная часть (overhead): аренда студии, зарплаты менеджеров, бухгалтерия, сайт, интернет, электричество, ремонты.</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Формула: Собівартість = Материалы + Работа + Логистика + Упаковка + Overhead + Потери. Overhead делится на количество вещей за месяц ($2000 фиксированных / 100 единиц = $20 на изделие). Первый образец (sample) включается в общую партию.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Ценообразование:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Розничная цена = себестоимость × коэффициент наценки. Стандартные коэффициенты: 2.0-2.5 мас-маркет, 2.7-3.3 премиум, 3.5-4.0 contemporary/дизайнерские, 5.0+ люкс. (На занятии 3 другая разбивка: 2.5-3.0 и 3.3+ - разные лекторы, суть одна: минимум ~3х для нового бренда.)</li>
+<li class='leading-relaxed'>Наценка vs маржа: наценка - множитель (cost 100 → цена 300 = ×3), маржа = (цена - себестоимость) / цена (в примере 66.6%). Маржа - реальный индикатор прибыльности.</li>
+<li class='leading-relaxed'>Опт = розница / 2 (розница = опт × 2-2.2). Оптовая цена тоже должна покрывать всё и давать маржу. Пример здоровой модели: себестоимость $60 → опт $120 → розница $240. Если себестоимость $100, а опт $110 - бренд обречён.</li>
+<li class='leading-relaxed'>Брак: закладывать 10% (большие тиражи масмаркета), 15% средний сценарий, 20% сложные изделия или малые тиражи.</li>
+<li class='leading-relaxed'>Наценка ≠ прибыль: сначала покрываются операционка, маркетинг и команда, остаток - чистая прибыль.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Типичные ошибки ценообразования: искусственное занижение "чтобы лучше покупали"; слепое копирование цен конкурентов без своего расчёта; игнор маркетинговых расходов в цене; отсутствие подушки на скидки и распродажи. "Лучше продавать меньше с правильной маржой, чем много и в минус".</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Финансы для владельцев бренда</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/34f187705a1b8084a179f651fff15078" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Фінанси для власників брендів</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Ключевая мысль: "кто контролирует финансы - контролирует бренд; кто нет - работает на выживание". Финансовая модель - это не Excel, а стратегия на 1-3 года.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Зачем дизайнеру финансы: понимать, сколько можешь позволить; не расти хаотично; здоровая маржа; строить команду; привлекать инвестиции/гранты; масштабироваться.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Расходы двух видов:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Постоянные (fixed): аренда, коммуналка, зарплаты менеджеров, бухгалтерия, сайт, интернет, оборудование, сервисы - то, что держится даже без продаж.</li>
+<li class='leading-relaxed'>Переменные (variable): ткани, фурнитура, работа швей, доставка, упаковка, сэмплы, съёмка, логистика каждой вещи.</li>
+<li class='leading-relaxed'>Fixed + Variable = реальные расходы. "Многие дизайнеры забывают fixed и не понимают, почему в минусе".</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Отчёт P&L (прибыли и убытки) - главный документ: Revenue → минус COGS = Gross Profit → минус OPEX (аренда, зарплаты, маркетинг) = Net Profit. Отвечает: зарабатываем ли, какие категории прибыльны, где теряем деньги, можно ли масштабироваться.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Отчёт Cash Flow: P&L показывает прибыль, но не наличие денег прямо сейчас. Пример: продали коллекцию оптом на $20 000, магазин заплатит через 90 дней, а ткань надо покупать сейчас - это cash-flow проблема. Именно поэтому у растущих fashion-брендов бывают кассовые разрывы.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Бюджетирование коллекций: коллекция = проект (расходы, ожидаемые продажи, маржа, риски, план производства). Бюджет включает: фурнитуру, производство, съёмку (модель/фотограф/стилист), лукбук, контент, упаковку, транспорт. Прогноз продаж: онлайн/офлайн/опт/предзаказы, топ-модели, средний чек. Сильный бренд - не тот, что делает 300 SKU, а тот, что правильно инвестирует в 15 бестселлеров. После сезона - обязательный разбор: что продалось и почему, что не работало, % маржи, скидки, рентабельность категорий.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Типичные ошибки: продавать дешевле, чем нужно (превращение в производство вместо бизнеса); не считать cash flow ("продажи есть, денег нет"); нет бюджета на рекламу и PR (должен быть в модели); не учитывать сезонность (сентябрь - продажи, январь/лето - спад, ноябрь - пик); нет прогноза - хаотичные решения.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Cash-flow и финансовая дисциплина с первого дня</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/Cash-flow-34f187705a1b8000946ed2d21900fd67" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Cash-flow і фінансова дисципліна з першого дня</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Cash-flow - учёт движения денег во времени: когда заходят, когда выходят, хватает ли в конкретный момент. Вести с ПЕРВОГО дня, даже без продаж.</li>
+<li class='leading-relaxed'>На старте достаточно простой таблицы: дата, сумма, кому, статья расходов, валюта (всё сводить в одну базовую валюту). Разнести по статьям и ежемесячно сверять план с фактом.</li>
+<li class='leading-relaxed'>До первых продаж достаточно: бизнес-план + cash-flow. Сложные модели не нужны. Задача - видеть: сколько потрачено, сколько осталось, на какой период хватит. Когда появляются продажи - добавляются P&L, бюджет, детальный контроль.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Кассовые разрывы:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Это не про убытки, а про тайминг: расходы возникают заранее (материалы, пошив, съёмки, маркетинг, команда), доход приходит с опозданием; сезонность; предоплаты производству.</li>
+<li class='leading-relaxed'>Частые причины: запуск без подушки, недооценка стартовых расходов, задержки производства, завышенные ожидания продаж, слишком быстрое масштабирование, скидки без юнит-экономики, B2B с отсрочками платежей.</li>
+<li class='leading-relaxed'>Кассовый разрыв ≠ плохой бизнес: это значит только, что деньги приходят не в тот момент, когда нужны.</li>
+<li class='leading-relaxed'>Прогнозирование: cash-flow с помесячной разбивкой заранее показывает месяцы максимальных расходов, месяцы без поступлений, критические точки баланса.</li>
+<li class='leading-relaxed'>Защита - финансовая подушка: минимум 3 месяца операционных расходов, идеально 6. Позволяет пережить задержки, не останавливать производство, не принимать хаотичных решений.</li>
+<li class='leading-relaxed'>Дисциплина: фиксировать всё, сверять план/факт, не расширять расходы, пока доход не стабилен. Рост расходов идёт ПОСЛЕ роста дохода, не до.</li>
+</ul>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Регистрация торговой марки</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80818f14d30786d052cc" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Реєстрація бренду</a></p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Авторское право возникает автоматически, а охрана ТМ - только после официальной регистрации.</li>
+<li class='leading-relaxed'>Что даёт регистрация: исключительные права (запретить копирование на похожих товарах, защита от контрафакта на таможне); стратегический актив (повышает стоимость компании, лицензирование, франчайзинг, инвестиции).</li>
+<li class='leading-relaxed'>Риск без регистрации: патентные тролли могут зарегистрировать ваше имя раньше вас - и потом законно запретить вам использовать ваше же имя.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Что можно зарегистрировать как ТМ: название бренда/имя дизайнера; логотипы и символы (крокодил Lacoste, монограммы LV); слоганы; названия моделей/коллекций/субрендов; фирменный цвет (красная подошва Louboutin - но это очень сложно); объёмные формы (у Ruslan Baginskiy зарегистрирована объёмная марка в виде шляпы). Совет: логотип и слоган регистрировать как самостоятельные ТМ, не только в составе комбинированной марки - так шире охрана.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Классы МКТУ (всего 45, защита только в выбранных): 25 - одежда, обувь, головные уборы; 18 - кожа и сумки; 14 - ювелирка; 35 - ритейл-услуги.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Причины отказов: общеупотребительные/родовые слова (Vetements = "одежда" - отказы; Off-White с "For Walking"; исключение - The Coat, но это сложная индивидуальная работа); сходство с существующей маркой - оценивается визуально, фонетически и семантически.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Процедура в Украине (4 шага): заявка → формальная экспертиза → квалификационная экспертиза (самая долгая, проверка уникальности) → публикация и выдача свидетельства. Срок: 16-20 месяцев (ускоренная процедура 6-9 мес. временно отменена). Действие: 10 лет от даты заявки, продлевается каждые 10 лет неограниченно.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Международная охрана - территориальна: украинское свидетельство за границей не защищает. Варианты: одна заявка на весь ЕС 27 стран (4-6 месяцев, для украинцев есть грантовые программы - экономия до 700 евро); Мадридская система (одна заявка на несколько стран, но зависит от базовой украинской заявки); локальная подача в конкретную страну (быстрее и надёжнее).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>5. Авторское право в моде</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b806f95a0fdb940e634f4" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Робота з авторським правом</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Три кита ИС в моде: авторское право (творческие произведения), промышленный образец (внешний вид одежды/аксессуаров), торговая марка (имя, лого, слоганы).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Главное правило: идеи не охраняются - только конкретная форма выражения. Принты с котиками запрещать нельзя (идея), конкретный рисунок котика - можно.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Охраняется авторским правом: принты и орнаменты, эскизы и иллюстрации, фотографии (лукбуки, кампании), выкройки и лекала (как графические произведения, но они не защищают сам дизайн готовой одежды).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>НЕ охраняется: сам одежда по умолчанию (для защиты дизайна - регистрировать промышленный образец; исключение - одежда-арт-объект); короткие тексты и слоганы (кейс: Ksenia Schnaider "Sample Not for sale" 2016 vs Zara 2017 - запретить копирование юридически невозможно, слоганы защищаются только через ТМ); народное творчество (но современная авторская интерпретация орнамента охраняется); официальные документы и новости.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Срок: возникает автоматически при создании; в Украине действует жизнь автора + 70 лет. Регистрация не обязательна, но свидетельство - железное доказательство авторства и даты в суде. Нюанс коллабораций с музеями: в разных странах сроки охраны картин отличаются - перед глобальным релизом проверять статус каждого произведения в стране хранения.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Передача прав ≠ передача файла: для использования творения брендом нужен письменный договор. Типы: договор отчуждения (полная передача имущественных прав; личные неимущественные права авторства всегда остаются у творца); лицензия исключительная (только вашему бренду, даже автор не может продавать другим) и неисключительная (автор может продать тем же правам и другим).</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Безопасность с командой: с найманными дизайнерами - договор передачи прав на все эскизы (иначе ушедший дизайнер может запретить выпуск коллекции; кейс: дизайнер Jocelyn Imbert передала LV права на "LV" только для сумок, в 2014 отсудила 780 000 евро за использование на обуви и браслетах); с художниками - чётко фиксировать границы использования (витрины ≠ упаковка ≠ сертификаты); с фотографами - права на фото по умолчанию остаются у фотографа, даже при полной оплате съёмки - нужен отдельный договор передачи прав или лицензия.</p>
+            </div>
+        </section>
+        
+        <section id="06-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Асортиментна матриця, квадрат Цвіккі, дропи</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 6. Створення колекції</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заметки по конспектам занятия (своими словами). Разделы дополняются по мере доступа (у Notion жёсткий лимит на частые открытия страниц, читаю с паузами).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Структура коллекции: роли товаров в бренде</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80cf8661d0ebb27ae8e3" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Структура колекції</a></p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Каждый продукт в ассортиментной матрице выполняет чёткую коммерческую или имиджевую функцию. 4 роли:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Локомотивы (база)</strong>: стабильные, понятные, прогнозируемые товары, продаются из сезона в сезон. Закрывают ежедневные потребности клиента, большой объём производства, просты в уходе, универсальны. Примеры лекторки: майки, пуховики, пуховые халаты.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Сезонные/трендовые</strong>: привязаны к теме текущей коллекции, актуальны "здесь и сейчас", быстро обновляются и обычно не повторяются. Нужны, чтобы удивлять постоянных клиентов и удерживать внимание.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Супергерои (statement-вещи)</strong>: эксцентричные, яркие, эмоциональные. Создаются прежде всего для контента, съёмок и привлечения аудитории. Продаются меньшими партиями, но формируют узнаваемость и образ бренда. Примеры: позолоченная проволочная шапочка, шапка-заяц, объёмный пуховик-кокон.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Тесты гипотез</strong>: экспериментальные позиции для проверки новых форм, материалов или смежных ниш - поиск новых векторов развития. Примеры: наборы для росписи писанок, парфюм для текстиля.</li>
+</ol>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Совет маленьким/новым брендам: на старте матрица должна быть МАКСИМАЛЬНО узкой. Оптимальный первый дроп: 2 базовые вещи + 1 супергерой + 1 тест. Большие коллекции распыляют ограниченные ресурсы новичка.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Дополнительно: акцентная и аксессуарная группа (шапки, балаклавы, "мультитаскеры") - дешевле основных изделий, эмоциональные покупки, охотно докупаются к основному заказу → поднимают средний чек.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Классификация по сложности производства (нагрузка на цех):</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Простые: минимум операций, легко масштабировать, цена ошибки минимальна.</li>
+<li class='leading-relaxed'>Средние: нужна квалификация мастеров, умеренная ручная работа. Должны составлять ~50% матрицы.</li>
+<li class='leading-relaxed'>Сложные: сложный крой, трудоёмкая обработка, высокая цена ошибки. Не строить матрицу только на сложных вещах - производство не выдаст нужный объём. Сложные часто шьют малым тиражом "лишь для съёмки".</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>ABC-анализ (когда есть история продаж) - деление ассортимента на группы:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>A (локомотивы): 20% ассортимента → 80% прибыли. Ядро бизнеса, масштабировать в первую очередь.</li>
+<li class='leading-relaxed'>B (стабильная середина): 30% ассортимента → 15-25% оборота. Усиливать маркетингом, переводить в A.</li>
+<li class='leading-relaxed'>C (хвост): 50% ассортимента → 5-10% оборота. Замораживают деньги в ткани и складе.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Гибкость по данным (кейс размерной сетки): годами доминировал размер S, анализ показал рост заказов L - производство переориентировали: опорный размер M, разработка XL, урезание XS.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Автоматизация: для P&L, ABC-анализа и остатков с первых продаж внедрять CRM (пример лекторки - KeyCRM). Ручной учёт в таблицах/на бумаге не масштабируется.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Асортиментна матриця</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80f39de5e64236fbe146" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Асортиментна матриця</a> - у чтении (лимит Notion), дополню.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Як шукати ідею колекції</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b8045a0a0f6194d3e71c1" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Як шукати ідею колекції</a> - у черзі.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Перші зразки та вибір матеріалів</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b80ab9fa3cd6df8a19332" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Створення перших зразків та вибір матеріалів</a> - у черзі.</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>5. Подальша робота з колекцією</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Источник: <a href="https://brave-protocol-da0.notion.site/39e187705a1b8074b59dc29b6a03e91e" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">Подальша робота з колекцією</a> - у черзі.</p>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Шаблоны занятия (скачаны в папку файлы): морфологический квадрат Цвіккі, шаблон и пример ассортиментной матрицы (Shypelyk), презентация Must Have.</p>
+            </div>
+        </section>
+        
+        <section id="08-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Кейс MustHave: власний цех, аутсорс, строки тканин, QC</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 8. Виробництво та підрядники</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Полный конспект по материалам лекций и Notion-модулей спикеров (Анна Коваленко и Анастасия Дзюба, соосновательницы бренда MustHave).</p>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Выбор формата производства на старте бизнеса</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Эволюция производства: от фриланса к масштабу</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Старт на фрилансе (опыт MustHave):</strong> 15 лет назад у основательниц не было капитала для собственного цеха. Бренд начинался со швей-надомниц (фрилансеров). Основательницы сами развозили ткань и собирали готовые заказы по всему городу на общественном транспорте.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Современные возможности:</strong> сегодня рынок ушел далеко вперед. Есть широкий пул фрилансеров (конструкторы, закройщики, технологи) и аутсорс-цехов, готовых шить качественные микропартии (от 10-20 единиц) для начинающих брендов.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Экспериментальный цех ("золотой состав")</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Если масштабного фабричного цеха еще нет, но есть базовый стартовый капитал, лучший первый шаг - собственный экспериментальный цех:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Состав команды:</strong> дизайнер (создание эскизов), конструктор (разработка и градация лекал), технолог (проработка узлов и технологии пошива), закройщик и швея-лаборант.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Оснащение:</strong> минимум оборудования - раскройный стол, прямострочка, оверлок, промышленный утюг / парогенератор.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Задача цеха:</strong> разработать и довести до идеала первый эталонный образец (sample). В идеале посадка утверждается со 2-го, максимум с 3-4-го образца.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Передача в серию:</strong> готовые проверенные лекала и эталонный образец передаются на массовый пошив на сторонние фабрики (аутсорс).</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Собственное производство: плюсы, минусы и грабли</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Пример первого стационарного цеха MustHave</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Площадь:</strong> всего 25 кв. метров.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Команда:</strong> 1 конструктор-закройщик ("два в одном") и 2 швеи.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Оборудование:</strong> 1 раскройный стол, прямострочная машина, оверлок, профессиональный утюг для ВТО (влажно-тепловой обработки).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Принцип роста:</strong> органический рост, 100% прибыли реинвестировалось в покупку нового оборудования и аренду дополнительных площадей.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Плюсы собственного производства</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Тотальный контроль качества:</strong> 100% надзор за каждым технологическим этапом. На аутсорсе брак и отклонения встречаются в разы чаще.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Гибкость и скорость дошива (реакция на спрос):</strong> если плановая модель стала хитом и разлетается, собственное производство может за пару дней перестроить поток и оперативно дошить нужную партию, пока держится сезонный спрос.</li>
+</ol>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Главный минус и риски</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Собственное производство - это отдельный тяжелый бизнес:</strong> требует непрерывной загрузки. Если ткани задержались или продажи просели, цех встает.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Постоянный стресс владельца:</strong> зарплату и аренду нужно платить независимо от сезона и колебаний рынка. Простой швей - прямой убыток.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Острый кадровый голод:</strong> в индустрии критически не хватает швей, закройщиков, конструкторов и технологов. Расширять штат тяжело, молодежь в профессию идет неохотно.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Поиск и работа с подрядчиками (аутсорс)</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Критерии выбора швейного цеха</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Цена и себестоимость:</strong> разброс цен на пошив одной и той же вещи на рынке может отличаться в 2-3 раза при схожем качестве. Обязателен мониторинг 5-10 производств.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Минимальная партия (MOQ):</strong> большинство крупных фабрик работают от 100-200 единиц на модель. Для дропа на 20-30 штук нужно искать специализированные малые цеха.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Соответствие стандартам качества:</strong> оборудование фабрики должно соответствовать вашим тканям (трикотаж требует плоскошовных машин, шелк - деликатной обработки, костюмная ткань - мощного ВТО).</li>
+</ol>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Где искать подрядчиков</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Поиск в Google и отраслевых каталогах (ua-region, ассоциации легпрома).</li>
+<li class='leading-relaxed'>Профильные Facebook-группы (например, Sewing Business Ukraine).</li>
+<li class='leading-relaxed'>Тематические сообщества в Telegram и Viber.</li>
+<li class='leading-relaxed'>Сарафанное радио и нетворкинг с коллегами: рынок украинского фешна компактный, владельцы брендов часто открыто делятся контактами и опытом.</li>
+<li class='leading-relaxed'>Локационные кластеры: например, Бердичев (Житомирская обл.) исторически является центром швейного дела с сильной школой кадров (там расположено производство MustHave).</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Как передавать заказ на аутсорс (защита от брака)</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Тестовый образец:</strong> никогда не отдавать тираж без предварительного отшива тестового образца именно на этом производстве.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Полный пакет исходников:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Эталонный семпл (образец идеального пошива);</li>
+<li class='leading-relaxed'>Проверенные лекала (в бумажном или плоттерном виде, с рассечками);</li>
+<li class='leading-relaxed'>Ткань, нитки и вся фурнитура;</li>
+<li class='leading-relaxed'>Четкий расчет расхода сырья на единицу и на всю партию.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Юридический договор:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Детальное технологическое описание обработки узлов;</li>
+<li class='leading-relaxed'>Регламент действий при обнаружении брака (за чей счет переделка или компенсация ткани);</li>
+<li class='leading-relaxed'>Сроки и штрафные санкции за задержку.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Специфика менеджмента:</strong> если бренд работает с 10-20 фабриками одновременно, требуется отдельный менеджер по работе с аутсорсом, который постоянно ведет коммуникацию и отслеживает слоты.</li>
+</ol>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Специфика работы с тканями и временные буферы</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Сроки производства тканей на зарубежных фабриках (Турция, Италия)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Сатин / легкие хлопковые ткани:</strong> 5-10 дней (+ до 5 дней на согласование цветопробы / лабораторных выкрасок + логистика).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Костюмные ткани:</strong> 4-6 недель.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Пестротканые ткани (клетка, полоска со сложным переплетением нитей):</strong> 8-10 недель.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Вязаный трикотаж (пряжа и вязание):</strong> размещение заказов за 6-9 месяцев до сезона! В сезон фабрики перегружены и заказы не принимают.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Украинский рынок тканей (складские запасы)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>На локальных оптовых рынках (например, 7-й километр в Одессе, оптовые склады Киева и Харькова) ткани покупаются из наличия.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Правило:</strong> увидели нужный объем и оттенок - выкупайте или вносите бронь немедленно. Завтра этого рулона уже может не быть, а повторного завоза не случится.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>5. Логистика, склад и внутренний контроль качества (QC)</h3>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Буфер на логистику:</strong> всегда закладывать +10-15% времени на доставку (таможня, очереди перевозчиков, задержки в пути).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Схема движения товара:</strong> Фабрика -> Центральный склад бренда -> Зона контроля качества (QC) -> Склад готовой продукции -> Продажи (онлайн / шоурумы).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Бескомпромиссный QC (Quality Control):</strong></li>
+<li class='leading-relaxed'>Ни одна вещь от аутсорсера не должна попадать клиенту без проверки штатными специалистами QC.</li>
+<li class='leading-relaxed'>Проверяются: соответствие размерной сетке (замеры сантиметровой лентой), симметрия, чистота швов, закрепки, отсутствие пятен и затяжек.</li>
+<li class='leading-relaxed'>Весь выявленный брак возвращается подрядчику на распарывание и перешивку. Брак клиенту не прощается: повторно привлечь разочарованного клиента стоит в 5-7 раз дороже, чем удержать качеством.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>6. Факапы на производстве и как к ним относиться</h3>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Ошибки - это норма:</strong> производство - живой организм, где задействованы десятки людей. Человеческий фактор исключить невозможно, нужно относиться к этому философски и закладывать риски в модель.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Типичные факапы:</strong></li>
+<li class='leading-relaxed'><em>«Почерк швеи»:</em> разные швеи на одном потоке могут давать разную посадку при отклонении в миллиметры. Требуется жесткий контроль технолога на линии.</li>
+<li class='leading-relaxed'><em>«Случайные размеры»:</em> ошибки раскроя, когда отшивается размер вне сетки (например, 30-й или 52-й). Приходится адресно продавать через соцсети под нестандартную фигуру.</li>
+<li class='leading-relaxed'><em>«Легкие факапы»:</em> перепутали цвет пуговиц или добавили не запланированный цвет ткани.</li>
+<li class='leading-relaxed'><em>«Тяжелые факапы»:</em> вшили молнии другого размера, испортили дорогую ткань, нарушили технологию дублирования (ткань пошла пузырями после утюга).</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>7. Идеальная формула: гибридная модель (Свое + Аутсорс)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Наиболее устойчивая модель для растущего бренда:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Собственный цех (база):</strong> закрывает флагманские модели, обеспечивает постоянную занятость ключевых мастеров, дает скорость для мгновенного дошива бестселлеров в сезоне.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Аутсорс (специализация и пики):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Закрывает сезонные всплески спроса (когда своему цеху не хватает мощностей).</li>
+<li class='leading-relaxed'>Берет на себя сложные специализированные категории: джинсы/деним (нужны варочные машины и спецстанки), верхняя одежда (тяжелые утеплители, прессы), вязаный трикотаж, спортивная технологичная одежда. Покупать такие станки в свой цех экономически нецелесообразно.</li>
+</ul>
+            </div>
+        </section>
+        
+        <section id="11-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Tone of Voice, 3 типи зйомок, інфлюенсери, воронка Meta Ads</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятие 11. Стратегія просування (Маркетинг, ToV, съемки, инфлюенсеры, PR)</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Полный развернутый конспект по материалам лекций и Notion-модулей курса. Практическое руководство по упаковке, голосу, визуалу и каналам привлечения fashion-бренда.</p>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Tone of Voice (ToV) - Голос и манера общения бренда</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Что такое Tone of Voice и зачем он нужен</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Суть:</strong> ToV - это манера коммуникации во всех точках контакта с аудиторией (соцсети, сайт, рассылки, реклама, Direct, PR, клиентский сервис и скрипты стилистов в шоуруме). Это не то, ЧТО говорит бренд, а то, КАК он это говорит.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Эмоциональная ценность:</strong> Большинство модных брендов шьют похожие базовые вещи из схожих тканей. В условиях жесткой конкуренции уникальный ToV становится главным нематериальным активом, который формирует лояльность и позволяет продавать с более высокой маржой.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Узнаваемость без логотипа:</strong> Сильный бренд узнается по тексту даже в анонимном посте без картинки и подписи.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>5 шагов разработки Tone of Voice</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Опора на ДНК и архетип:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Архетип Творца (например, Hermes) -> артистичный, интеллектуальный, элегантный язык с упором на ремесло и эксклюзивность.</li>
+<li class='leading-relaxed'>Архетип Славного малого / Друга (например, Ganni) -> расслабленный, неформальный стиль, будто близкая подруга зовет на шопинг и кофе.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Персонификация («Бренд как человек»):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Самый точный метод: представить, кем был бы ваш бренд в реальности.</li>
+<li class='leading-relaxed'>Как он разговаривает? Сдержанно или эмоционально? Иронично или строго? Использует сленг или классическую литературу?</li>
+<li class='leading-relaxed'>Кейс Jacquemus: говорит голосом своего создателя (Симона Порта Жакмюса), тексты звучат интимно, словно личный дневник ("Я обожаю это фото", "Моя летняя история").</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Фиксация 4-6 ключевых характеристик тона:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Примеры: теплый / интеллектуальный / артистичный / смелый / сдержанный / премиальный.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Формальные правила и лексика:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Местоимения: общение на "вы", на "ты" или обезличенно от имени дома/бренда.</li>
+<li class='leading-relaxed'>Структура предложений: короткие рубящие фразы или сложные концептуальные конструкции.</li>
+<li class='leading-relaxed'>Эмоциональность: использование восклицаний, смайликов или полный отказ от них (как у Balenciaga).</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Создание ToV-гайда (Do / Don't):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Сводная таблица для всей команды: фразы, которые бренд всегда использует, и стоп-слова, которые запрещено писать в комментариях и Direct.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Адаптация ToV под сегменты аудитории</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Голос бренда остается единым, но ключевые триггеры меняются:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Новаторы (трендсеттеры):</strong> триггер "Будь первым", акцент на уникальности, риске, новых формах и показах на знаковых инфлюенсерах.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Лояльные покупатели:</strong> триггер персонального внимания ("Ваш персональный стилист", "Мы помним ваш размер", персональные примерки).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Подражатели (фолловеры):</strong> триггер социального доказательства ("Эту модель выбирают звезды и топ-блогеры").</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Географическая адаптация:</strong></li>
+<li class='leading-relaxed'><em>США:</em> высокий уровень эмоций, кинематографичный сторителлинг, фокус на знаменитостях.</li>
+<li class='leading-relaxed'><em>Европа:</em> сдержанность, фокус на наследии, экологичности, архитектурности кроя и качестве пошива.</li>
+<li class='leading-relaxed'><em>Азия:</em> фокус на культурных кодах, символизме и глубокой локализации контента.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Фирменные приемы брендов</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Авторский словарь (неологизмы):</strong> кейс украинского бренда Kachorovska (авторские названия фасонов: "кавбути", "стрингбеки").</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Человеческие имена продуктам:</strong> туфли "Мариса", сумка "Яна" создают эффект одушевления и привязанности.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Поэтические названия цветов:</strong> вместо "бежевый" или "зеленый" писать "соленая карамель", "морская пена", "бутылочное стекло".</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. Визуальная идентичность и организация съемок</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Визуальный код как социальный маркер</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Визуальная айдентика в моде транслирует статус и принадлежность к определенному культурному слою ("Мы с тобой одной эстетической группы"). Включает цветовую палитру (1-2 фирменных цвета + 3-5 поддерживающих), характерную типографику, ракурсы и композицию кадров.</p>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Три типа съемок в fashion-бизнесе</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Каталог / Lookbook (техническая съемка):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><em>Цель:</em> продажи на сайте и в b2b-каталогах (лайн-шитах для байеров).</li>
+<li class='leading-relaxed'><em>Специфика:</em> чистый ровный свет, нейтральный фон (белый, серый, бежевый), четко видна посадка изделия спереди, сзади, сбоку и фактура ткани вблизи. Модель не должна перетягивать внимание на себя позами.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Кампейн (Campaign / Имиджевая съемка):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><em>Цель:</em> передать философию, настроение и дух коллекции.</li>
+<li class='leading-relaxed'><em>Специфика:</em> кинематографичность, сложная локация, авторский свет, драматический стайлинг. Кадры идут в глянец, наружную рекламу, баннеры на главной странице и шапку соцсетей.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Контент / SMM съемка (Reels, TikTok, Stories):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><em>Цель:</em> ежедневная динамика в соцсетях.</li>
+<li class='leading-relaxed'><em>Специфика:</em> живые кадры на телефон или компактную камеру, съемка в движении, микродетали (звук молнии, драпировка ткани), закулисье цеха, примерка на разных типах фигур.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Чек-лист продюсирования съемки</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Мудборд и ТЗ:</strong> детальная раскадровка (mood, lighting, posing, styling, hair & makeup, props). Мудборд должен однозначно пониматься фотографом и стилистом без лишних слов.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Кастинг моделей:</strong> типаж должен точно попадать в ЦА. Для премиума - характерные модельные лица; для повседневной базы - естественные, конвенционально красивые, дружелюбные образы.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Команда съемки:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Продюсер (организация локации, тайминг, кейтеринг, логистика одежды);</li>
+<li class='leading-relaxed'>Фотограф и оператор (свет, техника, цветокоррекция);</li>
+<li class='leading-relaxed'>Стилист (подбор обуви, аксессуаров, составление готовых луков);</li>
+<li class='leading-relaxed'>MUA / Hair стилист (макияж и укладка);</li>
+<li class='leading-relaxed'>Ассистент / отпариватель (подготовка вещей: стрелки, чистота, глажка перед кадром).</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Call Sheet (вызывной лист):</strong> документ с поминутным таймингом, адресом студии, контактами всех участников и списком артикулов по лукам.</li>
+</ol>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. Инфлюенс-маркетинг (Работа с блогерами)</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Градация инфлюенсеров</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Nano (1-10k) и Micro (10-50k):</strong> самый эффективный сегмент для молодого бренда. Высокое доверие аудитории, живой отклик, охотно работают по бартеру (вещь в подарок за искренний отзыв/отметку).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Middle (50-250k):</strong> профессиональные контент-мейкеры. Смешанный формат (бартер + оплата), высокий охват, хорошая эстетика подачи.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Top / Селебрити (от 250k+):</strong> работают строго на имидж и узнаваемость бренда, редко дают окупаемость в лоб на первой покупке.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Форматы взаимодействия</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Бартерный сидинг (Gifting / Seeding):</strong> отправка подарков лидерам мнений. Главное правило - без давления и жестких требований публикации. Красивая персонализированная упаковка, рукописная открытка, попадание в размер и личный стиль инфлюенсера.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Коммерческая интеграция:</strong> четкое ТЗ (какие элементы кроя показать, артикул, промокод, ссылка на сайт), но с сохранением авторской манеры блогера. Фальшивые заученные тексты убивают конверсию.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Амбассадорство:</strong> долгосрочный контракт (от 3-6 месяцев), когда инфлюенсер регулярно интегрирует бренд в свой повседневный гардероб.</li>
+</ol>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Каналы продвижения: Платные vs Органические</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Платный трафик</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Meta Ads (Instagram / Facebook):</strong> ключевой генератор продаж для fashion D2C в Украине и мире.</li>
+<li class='leading-relaxed'><em>Воронка Meta:</em></li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Верх воронки (Top of Funnel): динамичные Reels, видеокампейны с ярким хуком в первые 2 секунды (проблема с посадкой, уникальный цвет, капсула на сезон).</li>
+<li class='leading-relaxed'>Середина (Middle of Funnel): карусели с готовыми луками, подборки по категориям, отзывы и распаковки.</li>
+<li class='leading-relaxed'>Низ воронки (Bottom of Funnel / Ретаргетинг): брошенные корзины, просмотры каталога, скидка на первый заказ или предложение бесплатной примерки/доставки.</li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Google Shopping / Performance Max:</strong> работает на сформированный спрос (пользователи, которые прямо ищут "купить шерстяное пальто оверсайз Киев" или "шелковое платье комбинация").</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">TikTok Ads:</strong> масштабирование молодежных и трендовых капсул с низким и средним чеком.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Органические каналы</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Instagram:</strong> главная витрина бренда, место сбора комьюнити и закрытия сделок через Direct.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">TikTok:</strong> органический алгоритмический лифт. Вирусными становятся форматы: процесс создания вещи, ошибки и факапы на фабрике, преображение клиенток, видео от лица основателя ("POV: я создала бренд одежды").</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Pinterest:</strong> мощный недооцененный источник долгосрочного органического трафика на сайт. Пин живет от 4 до 6 месяцев (в отличие от поста в Instagram, который живет 48 часов). Приводит теплую аудиторию, планирующую капсульный гардероб, свадебные образы или сезонные покупки.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>5. PR, медиа и спецпроекты</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Как попасть в глянцевые медиа (Vogue, Elle, L'Officiel, Harper's Bazaar, DTF)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Медиа не пишут о коммерции. Пресс-релиз в духе "Бренд X выпустил весеннюю коллекцию юбок" отправляется в корзину.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Что цепляет редакторов моды:</strong></li>
+<li class='leading-relaxed'>Социальный подтекст или благотворительная миссия;</li>
+<li class='leading-relaxed'>Использование инновационных или переработанных материалов (апсайклинг, эко-технологии);</li>
+<li class='leading-relaxed'>Глубокое переосмысление культурного наследия (этно-коды, коллаборации с музеями);</li>
+<li class='leading-relaxed'>Громкие инфоповоды: открытие флагмана, показ на Fashion Week, образ бренда на мировых звездах первой величины.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Коллаборации (Brand Collabs)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Эффективный способ удвоить аудиторию без прямых рекламных затрат.</li>
+<li class='leading-relaxed'><em>Форматы:</em> Бренд одежды + известный художник / иллюстратор; Бренд одежды + нишевый парфюмерный бренд; Бренд одежды + ювелирная марка.</li>
+<li class='leading-relaxed'>Взаимный пиар по базам лояльных клиентов обеих сторон.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Партизанский маркетинг и ивенты</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Pop-Up Stores:</strong> временные магазины на 2-3 дня в знаковых локациях (курорты, арт-пространства, фестивали). Создают искусственный дефицит и ажиотаж.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Клиентские дни и trunk shows:</strong> закрытые презентации для топ-клиентов с шампанским, стилистами и возможностью предзаказа коллекции со скидкой до официального релиза.</li>
+</ul>
+            </div>
+        </section>
+        
+        <section id="13-14-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Кейс FROLOV: баєри в Парижі, лайн-шити, e-commerce, митниця</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятия 13 и 14. Дистрибуция, продажи и выход на международный рынок</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Полный развернутый конспект по материалам лекций и модулей курса (включая практический опыт Ивана Фролова, основателя бренда FROLOV). Стратегия каналов сбыта, B2B опт, e-commerce, ритейл, таможня и экспорт.</p>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>1. Архитектура каналов продаж fashion-бренда: B2C vs B2B</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Главное правило устойчивости модного бизнеса - диверсификация источников дохода. Нельзя зависеть от одного Instagram или одного шоурума.</p>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Модель B2C (Собственный ритейл)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Точки контакта:</strong> собственный монобрендовый бутик / шоурум, корнер (например, в ЦУМе), официальный интернет-магазин, соцсети (Instagram Direct, TikTok Shop).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Плюсы:</strong></li>
+<li class='leading-relaxed'>Максимальная маржинальность (нет посредников, забирающих 50-70% розничной цены).</li>
+<li class='leading-relaxed'>Прямой контакт с покупателем и сбор бесценной аналитики: реальная посадка на живых людях, популярные размеры, ходовые цвета сезона, причины отказов в примерочной.</li>
+<li class='leading-relaxed'>Низкая цена ошибки: если модель не «зашла», ее можно перешить, уценить или адаптировать без штрафов от ритейлеров.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Минусы:</strong></li>
+<li class='leading-relaxed'>Высокая стоимость обслуживания (дорогая аренда, зарплаты стилистов-консультантов, администраторов, клининг, ремонт и химчистка вещей после примерок).</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Модель B2B (Оптовые продажи / Wholesale)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Форматы работы:</strong></li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><em>Выкуп (Wholesale buy):</em> партнерский магазин / байер заказывает партию по договору купли-продажи с оптовой скидкой (обычно 2.2-2.5x от себестоимости или 50% от розничной цены RRP). Наиболее выгодный и безопасный для бренда формат.</li>
+<li class='leading-relaxed'><em>Консигнация (Реализация):</em> вещи передаются в магазин без оплаты, деньги перечисляются бренду только по факту продажи клиенту. Риски непродажи и порчи вещей лежат на бренде.</li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Плюсы B2B:</strong> крупные предсказуемые чеки, масштабный выход на новые города и страны, статус бренда (присутствие в знаковых концепт-сторах мира).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Минусы B2B:</strong> жесткие дедлайны по пошиву и отгрузке, строгие требования к сертификации и документам, длинный цикл сделки (до 6-8 месяцев от показа до оплаты).</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>2. B2B Wholesale: Календарь, маркетинг и правила работы с байерами</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Сезонный календарь модной индустрии</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Мировой модный рынок живет по строгому графику двух основных сезонов:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Весна-Лето (Spring-Summer / SS):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Презентация байерам: сентябрь - начало октября (Недели моды).</li>
+<li class='leading-relaxed'>Пошив и отгрузка в магазины: февраль - март следующего года.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Осень-Зима (Fall-Winter / FW):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Презентация байерам: февраль - начало марта.</li>
+<li class='leading-relaxed'>Пошив и отгрузка в магазины: август - сентябрь.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Структура дропа для байеров</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Пре-коллекция (Pre-collection):</strong> 60-70% объема продаж. Коммерческая, понятная, легко продаваемая одежда (базовые силуэты, бестселлеры в новых цветах).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Основная коллекция (Main collection):</strong> концептуальные вещи, подиумные образы (show-pieces), формирующие имидж бренда и привлекающие прессу.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Carry-overs (Керри-оверы):</strong> внесезонные вечные хиты бренда, которые продаются из года в год без скидок.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Пакет документов для байера (Обязательный стандарт)</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Lookbook (Лукбук):</strong> визуальная подача коллекции на моделях в высоком разрешении.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Line Sheet (Лайн-шит):</strong> рабочий каталог для байера. Содержит технические фото каждой вещи (спереди и сзади), артикул, доступные цвета/ткани, размерную сетку, оптовую цену (Wholesale price) и рекомендованную розничную цену (RRP).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Order Form (Бланк заказа):</strong> стандартизированная таблица (Excel / цифровая платформа типа Joor или NuORDER), где байер проставляет количество единиц по каждому размеру и цвету.</li>
+</ol>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Условия работы и стандарты контрактов (Опыт FROLOV)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Минимальный заказ (MOQ):</strong> для молодого независимого бренда входной порог для первого оптового заказа обычно составляет от $5,000.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Условия оплаты:</strong></li>
+<li class='leading-relaxed'><em>Золотой стандарт:</em> 100% предоплата до отгрузки товара.</li>
+<li class='leading-relaxed'><em>Классическая схема:</em> 30% или 50% предоплата в момент размещения заказа (идет на закупку тканей и фурнитуры) + остаток 70% или 50% перед отправкой партии со склада. Никаких отгрузок под честное слово.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Базис поставки (Incoterms):</strong></li>
+<li class='leading-relaxed'><em>EX Works (Kyiv):</em> самовывоз со склада бренда в Киеве. Минимальная ответственность бренда (заканчивается при передаче курьеру).</li>
+<li class='leading-relaxed'><em>DAP (Delivered at Place):</em> бренд берет на себя вызов курьера (DHL/FedEx), экспортное таможенное оформление в Украине и доставку до дверей магазина партнера.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>3. E-commerce и омниканальность: Тренды, грабли и кейс Farfetch</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Платформа для интернет-магазина</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Shopify:</strong> безоговорочный мировой лидер для fashion. Быстрый старт (от $39/мес), идеальная мобильная адаптация, готовая интеграция со складами, CRM, аналитикой и международными эквайрингами (Stripe, PayPal).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Своя разработка (Custom):</strong> оправдана только при многомиллионных бюджетах. На старте съедает от $5,000 до $30,000 и постоянно требует штатного программиста на фикс.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Главный вызов fashion e-commerce: Возвраты до 30-40%</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>В онлайн-торговле одеждой покупатели часто заказывают несколько размеров на примерку, возвращая до 30-40% товаров.</li>
+<li class='leading-relaxed'>Бренд несет двойные расходы: стоимость доставки туда и обратно, банковские комиссии эквайринга за транзакции и возвраты, затраты на переупаковку и отпаривание вещей.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Кейс падения Farfetch:</strong> маркетплейс Farfetch взлетел на пандемийном буме, но позже столкнулся с колоссальными убытками. Причины: огромная стоимость обратной логистики/возвратов и отказ ключевых люксовых домов продавать через скидочные сторонние платформы, разрушающие статус марки.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Модели запасов: Сток (Ready-to-wear) vs On-Demand (Под заказ)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Готовый сток:</strong> обеспечивает мгновенную доставку (клиент получает вещь за 1-3 дня), стимулирует импульсивные покупки, но замораживает оборотный капитал в непроданных остатках.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">On-Demand (Индивидуальный пошив под заказ):</strong> процент возвратов падает ниже 1%, нулевой риск неликвида, но длинный срок ожидания (7-14 дней) отсекает аудиторию, которой наряд нужен "на завтра".</li>
+<li class='leading-relaxed'><em>Оптимальный баланс:</em> бестселлеры и базовые размеры держать в небольшом готовом стоке, а сложные вечерние или кастомные позиции отшивать On-Demand.</li>
+</ul>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Омниканальность и Click & Collect</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Мировой тренд - слияние онлайна и офлайна:</p>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Онлайн привлекает внимание, но ключевое решение о покупке дорогой вещи часто принимается в примерочной ("раздеть клиента" - самая сложная задача ритейла).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Click & Collect:</strong> клиент выбирает вещь на сайте, бронирует и приходит на примерку в физическую точку / бутик партнера. Консультант допродает аксессуары и сопутствующие вещи, повышая средний чек.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>4. Выход на международный рынок и экспортная логистика</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Где искать зарубежных байеров</h4>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Оптовые шоурумы на Неделях моды:</strong> 4 ключевых рынка в Париже (во время кутюрных, мужских и двух женских недель моды), а также Милан, Лондон, Нью-Йорк.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Профильные трейд-шоу:</strong> Tranoi, White Milano, Who's Next, Scoop London.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Прямой аутрич (Cold Outreach):</strong> сбор базы контактов байеров бутиков, где уже продаются бренды вашего ценового и стилистического сегмента. Персонализированные короткие письма со ссылкой на лукбук и лайн-шит.</li>
+</ol>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>Преодоление таможенных барьеров (Украина - ЕС / США)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Проблема ввозных пошлин и НДС:</strong> покупатель из ЕС при заказе из Украины может получить таможенное уведомление на оплату до 20-30% НДС и пошлин от суммы заказа. Многие клиенты пугаются и отказываются забирать посылку, в результате чего бренд оплачивает обратную дорогу и налоги.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Решения проблемы:</strong></li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><em>Международный фулфилмент (Fulfillment Hub в Польше/Германии):</em> партия товара официально затамаживается и завозится на европейский склад один раз. Дальше клиентам внутри ЕС заказы доставляются за 1-3 дня без пошлин и растаможек.</li>
+<li class='leading-relaxed'><em>Регистрация юридического лица в ЕС:</em> открытие компании (например, в Польше или Эстонии) для прямого приема оплат через европейский Stripe и работы в едином таможенном пространстве.</li>
+</ol>
+            </div>
+        </section>
+        
+        <section id="16-18-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Кризи росту Грейнера, кейс Шепелик, Sustainability, PLNGNS</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Занятия 16 и 18. Операционный менеджмент, масштабирование команды и тренды (Sustainability & FashionTech)</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Полный развернутый конспект по материалам лекций и модулей курса (включая кейс бренда «Шепелик» и устойчивого бренда PLNGNS). Системное руководство по построению операционной модели, делегированию, эко-трансформации и инвестициям.</p>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ЧАСТЬ 1. Занятие 16. Операционный менеджмент и масштабирование команды</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>1. Эволюция компании по модели Грейнера в fashion-бизнесе</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Развитие модного бренда подчиняется закону кризисов роста:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Этап «Креативность» (0-5 человек / «Я делаю все сам»):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Основатель лично вовлечен во все: эскизы, поездки за тканью, примерки, ведение соцсетей, ответы в Direct, упаковка заказов на Новой Почте.</li>
+<li class='leading-relaxed'><em>Кризис:</em> перегрузка и выгорание.</li>
+<li class='leading-relaxed'><em>Психологическая ловушка:</em> «Никто не сделает лучше меня». Она блокирует делегирование и удерживает бизнес в микро-масштабе.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Этап «Дирекция» (5-15 человек / «Я руковожу»):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Появляются первые четкие роли (конструктор, менеджер по закупкам, контент-мейкер, швеи). Владелец становится менеджером.</li>
+<li class='leading-relaxed'><em>Кризис:</em> потеря прямого тактильного контроля над каждым швом и постом.</li>
+<li class='leading-relaxed'><em>Психологическая ловушка:</em> «Они все делают не так, бизнес рушится». Нужно учиться доверять регламентам и обучать команду.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Этап «Координация» (30-100 человек / «Системы и правила»):</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Внедрение регламентов, должностных инструкций, систем учета (CRM/ERP), сквозных KPI и регулярного менеджмента.</li>
+<li class='leading-relaxed'><em>Кризис:</em> бюрократия и потеря былой гибкости.</li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Этап «Сотрудничество» и «Альянсы»:</strong></li>
+</ol>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Автономные кросс-функциональные команды, партнерства, франшизы и внешние альянсы.</li>
+</ul>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'><em>Главный вывод для основателя:</em> fashion-бренд почти всегда рождается на личной харизме и вкусе автора. Но если не выстроить систему процессов, владелец навсегда останется заложником операционной рутины.</p>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>2. Пять базовых операционных блоков fashion-бренда</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Бизнес работает устойчиво только тогда, когда оцифрованы все пять контуров:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Продукт и производство:</strong> цикл разработки коллекции, календарный график отшива, технические карты (замеры по узлам), контроль качества (QC), управление складскими запасами.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Продажи:</strong> B2C (сайт, шоурум, соцсети), B2B (байеры, опт), обработка заказов, клиентский сервис и регламент работы с возвратами.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Маркетинг и PR:</strong> контент-план, запуски дропов, инфлюенс-сидинг, платный трафик (Meta/Google), спецпроекты.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Склад и логистика:</strong> приемка партий, инвентаризация, маркировка, упаковка, отправка курьерскими службами, учет брака.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Финансы и учет:</strong> отчет о движении денежных средств (Cash Flow), отчет о прибылях и убытках (P&L), план-факт анализ, расчет себестоимости и маржинальности каждого SKU.</li>
+</ol>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>3. Запуск дропа малой командой (0-10 человек)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Фокус на монопродукте:</strong> при старте с ограниченным бюджетом нельзя распыляться на широкую коллекцию из 20 позиций. Идеальный запуск - монопродукт (1-2 знаковых изделия: идеальное пальто, безупречный жакет или культовые брюки). Это снижает риск ошибки в 10 раз и экономит оборотный капитал.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Точечный аутсорсинг:</strong> постоянный штат держать не нужно. Конструктор, фотограф, модель, стилист и таргетолог привлекаются проектно.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Tethered Shooting (Съемка в ноутбук):</strong> подключение камеры проводом к экрану ноутбука на съемочной площадке. Вся команда сразу видит реальную посадку, складки ткани и свет. Это исключает риск брака кадров и дорогостоящих повторных съемок.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Кейс партизанского запуска бренда «Шепелик»:</strong></li>
+<li class='leading-relaxed'>Осень 2022 года. Основательница на позднем сроке беременности, конструктор на больничном, менеджер в отпуске.</li>
+<li class='leading-relaxed'>Концепция: съемка коллекции на заброшенных остановках транспорта в селах («поездка к бабушке»).</li>
+<li class='leading-relaxed'>Коллаборация с Kärcher: компания бесплатно предоставила мобильную машину для мытья остановок.</li>
+<li class='leading-relaxed'>Результат: вирусный охват, сотни публикаций в медиа без бюджета на PR при команде из 1 основателя и 3 швей.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>4. Автоматизация и цифровой стек</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">CRM для fashion в Украине:</strong> внедрение KeyCRM или аналогичных систем. Автоматический сбор лидов из Instagram Direct, сайта и мессенджеров в одно окно.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Складской и товарный учет:</strong> интеграция сайта со складом, автоматическая печать ТТН Новой Почты, интеграция с программными кассами (пРРО: Checkbox/Вчасно).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Финансовое правило:</strong> партия никогда не запускается в пошив до подтверждения маржинальности на бумаге. В розничную цену закладываются не только ткань и пошив, но и эквайринг, налоги, бюджет на рекламу, возвраты и процент на скидки в конце сезона.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ЧАСТЬ 2. Занятие 18. Тренды индустрии: Sustainability, технологии и инвестиции</h3>
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>1. Три столпа устойчивого развития (Sustainability)</h4>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Модная индустрия - один из главных загрязнителей планеты. Будущее рынка принадлежит брендам, встроенным в экологическую повестку:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Экологический аспект:</strong> использование органических, сертифицированных (GOTS, OEKO-TEX) и переработанных материалов, снижение углеродного следа, отказ от токсичных красителей, минимизация отходов кроя (zero-waste крой).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Социальный аспект (Ethical Fashion):</strong> безопасные условия труда на фабриках, справедливая оплата труда швей (fair living wage), запрет детского труда, гендерное равенство. Сертификации: SMETA, SA8000, Fair Trade.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Экономический аспект (Circular Economy / Циклическая мода):</strong> переход от линейной модели («купил - поносил - выбросил») к циклической: долговечность, ремонт, вторичная переработка (recycling), кастомизация и апсайклинг (upcycling).</li>
+</ol>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>2. Регуляции ЕС и борьба с гринвошингом (Greenwashing)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Greenwashing (Гринвошинг):</strong> необоснованные заявления бренда об экологичности («100% эко», «зеленая коллекция»), не подкрепленные независимыми аудитами.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Новое законодательство ЕС:</strong> Евросоюз вводит уголовную и административную ответственность и многомиллионные штрафы за недоказанные эко-заявления.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Digital Product Passport (Цифровой паспорт изделия / DPP):</strong></li>
+<li class='leading-relaxed'>Обязательное требование директив ЕС для импортируемого текстиля к 2026-2027 годам.</li>
+<li class='leading-relaxed'>Вшитый QR-код / NFC-метка на ярлыке, сканируя которую покупатель и таможня видят: точный состав, страну происхождения сырья, фабрику пошива, объем углеродного следа, инструкции по ремонту и сертификат переработки.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Запрет на уничтожение непроданных остатков:</strong> европейским брендам законодательно запрещено сжигать или вывозить на свалку нераспроданные коллекции. Это стимулирует бренды переходить на точное планирование и предзаказы.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>3. Кейс украинского апсайклинг-бренда PLNGNS</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Концепция:</strong> бренд, основанный Митей Гонтаренко, создающий премиальную обувь и одежду исключительно из переработанных материалов и старых кроссовок.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Производственный процесс:</strong> скупка винтажной и списанной обуви, глубокая дезинфекция, ручной разбор на детали и сшивание уникальных силуэтов.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Успех:</strong> показ на Неделе моды в Берлине, международное признание, коллаборации с мировыми ритейлерами. Кейс доказывает: вторичная переработка может быть коммерчески успешным люксовым продуктом, а не просто нишевым хобби.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>4. Технологии в моде (FashionTech)</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">3D-моделирование и цифровые сэмплы (Clo3D, Browzwear):</strong> разработка лекал и посадки на 3D-аватарах. Сокращает необходимость пошива физических образцов на 60-70%, экономя месяцы времени и тысячи метров дорогой ткани.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Генеративный ИИ в кампейнах:</strong> использование AI для генерации виртуальных фонов, декораций, лукбуков и мудбордов, что удешевляет продакшен в разы.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Виртуальная примерка (AR Fitting):</strong> технологии примерки обуви и одежды через камеру смартфона, снижающие процент возвратов в интернет-магазинах на 15-20%.</li>
+</ul>
+<hr class='my-6 border-slate-200 dark:border-slate-800' />
+<h4 class='text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2'>5. Как привлекать инвестиции в fashion-бизнес</h4>
+<ul class='space-y-2 my-3 list-disc list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Особенность fashion для венчурных фондов (VC):</strong> классические венчурные фонды редко инвестируют в традиционные бренды одежды из-за низкой масштабируемости (товарный бизнес требует постоянного замораживания капитала в ткани и стоке). Исключение - FashionTech стартапы, маркетплейсы и платформы перепродажи.</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Ангельские инвестиции и профильные фонды:</strong></li>
+<li class='leading-relaxed'>Бизнес-ангелы из индустрии ритейла;</li>
+<li class='leading-relaxed'>Стратегические инвесторы (владельцы фабрик, текстильных домов, дистрибьюторских сетей);</li>
+<li class='leading-relaxed'>Грантовые программы (программы поддержки украинских экспортных производителей от USAID, EU4Business, Horizon Europe).</li>
+<li class='leading-relaxed'><strong class="font-semibold text-slate-900 dark:text-white">Что оценивает инвестор перед сделкой:</strong></li>
+</ul>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Unit-экономика: валовая маржа от 60-70%, устойчивый показатель возврата инвестиций в рекламу (ROAS от 3.0+).</li>
+<li class='leading-relaxed'>Показатель удержания клиентов (Retention rate и повторяемость покупок).</li>
+<li class='leading-relaxed'>Международный потенциал: наличие подтвержденных B2B-заказов от зарубежных байеров или растущая доля прямых экспортных онлайн-продаж.</li>
+</ol>
+            </div>
+        </section>
+        
+        <section id="-" class="content-section bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-800 mb-12 scroll-mt-24 transition-all">
+            <div class="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1 rounded-full">Чек-листи та шаблони для всіх 5 практичних ДЗ</span>
+            </div>
+            <div class="prose max-w-none text-slate-800 dark:text-slate-200">
+                <h2 class='text-2xl font-black text-slate-900 dark:text-white mt-4 mb-4'>Практические задания курса (Домашні завдання)</h2>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Формулировки заданий - полезны как готовые чек-листы для построения бренда. Личные работы других студентов курса не копирую (приватное).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ДЗ 1. Бренд-ДНК (Концепція та позиціонування)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заполнить комплексную матрицу анализа и позиционирования бренда (Google Sheets шаблон):</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Выбрать архетип бренда (по списку из материалов).</li>
+<li class='leading-relaxed'>Прописать ценности: 3-5 ключевых, с пониманием, что они должны отражаться в каждом шве, упаковке и кампании.</li>
+<li class='leading-relaxed'>Проанализировать нишу и конкурентов (вкладка в таблице): 3-5 прямых и непрямых конкурентов, их сильные/слабые стороны, формулировка своего УТП.</li>
+<li class='leading-relaxed'>Сформировать портрет ЦА (вкладка анализа аудитории): описать идеального клиента.</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ДЗ 3. Бизнес-план</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заполнить шаблон бизнес-плана. Обязательные блоки на старте: Резюме проєкту, Опис бізнесу, Продукт/Послуга, Аналіз ринку. Остальные блоки заполняются по ходу курса (если бренда ещё нет - оставлять пустыми и дополнять).</p>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ДЗ 6. Асортиментна матриця</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заполнить шаблон ассортиментной матрицы первой мини-коллекции/дропа:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Определить идею мини-коллекции (можно через морфологический квадрат Цвіккі).</li>
+<li class='leading-relaxed'>Определить количество айтемов и их категории.</li>
+<li class='leading-relaxed'>Эскизы 4-6 айтемов.</li>
+<li class='leading-relaxed'>Разбить коллекцию на логические блоки (верхняя одежда, трикотаж, низы, аксессуары) с балансом базовых/трендовых/имиджевых вещей.</li>
+<li class='leading-relaxed'>Товарные характеристики: артикул, название, категория, сезонность, цвета, состав ткани, размерная сетка.</li>
+<li class='leading-relaxed'>Собестоимость единицы, розничная цена, оптовая цена, маржинальность.</li>
+<li class='leading-relaxed'>Плановое количество единиц на пошив по размерам и цветам (SKU).</li>
+<li class='leading-relaxed'>Проверить матрицу на коммерческую жизнеспособность: слабые позиции убирать, не раздувать бюджет.</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ДЗ 11. Маркетинговая стратегия и ToV</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Заполнить таблицу шаблона:</p>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Маркетинговая и коммуникационная стратегии (соответствующие вкладки).</li>
+<li class='leading-relaxed'>Tone of Voice: правила общения бренда. Какой он - дерзкий или сдержанный? Сленг или академичность? На "ти" или на "ви"?</li>
+<li class='leading-relaxed'>Дополнительно (необязательно): мудборд и референсы для съёмки первого кампейна/лукбука - свет, локация, стайлинг, позинг, настроение. Мудборд должен быть понятен фотографу.</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>ДЗ 13. Дистрибуция и финал (Instagram-магазин)</h3>
+<ol class='space-y-2 my-3 list-decimal list-inside text-slate-700 dark:text-slate-300'>
+<li class='leading-relaxed'>Список онлайн-площадок: 3-5 потенциальных платформ (маркетплейсы типа Rozetka/Kasta/SHAFA, локальные нишевые vsi.svoi/Kashtan, международные Etsy/ASOS). Для каждой: условия входа, % комиссии, требования к упаковке/контенту.</li>
+<li class='leading-relaxed'>Список офлайн-точек: 3-5 (корнеры в мультибрендовых шоурумах, концепт-сторы, универмаги, маркеты). Локация + формат сотрудничества (аренда рейла, реализация с комиссией, выкуп).</li>
+<li class='leading-relaxed'>Дополнительно: финализировать бизнес-план - собрать всю наработку курса в единый документ, с которым можно идти к инвесторам/партнёрам.</li>
+</ol>
+<h3 class='text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-8 mb-3 pb-2 border-b border-slate-200 dark:border-slate-800'>Формат сдачи (общий для всех ДЗ)</h3>
+<p class='my-2 leading-relaxed text-slate-700 dark:text-slate-300'>Копия шаблона на свой диск, имя файла name_lastname_<название>, доступ по ссылке в режиме «Коментатор», ссылка вставляется в комментарий под заданием в кабинете. Оценка из 40 баллов.</p>
+            </div>
+        </section>
+        
+            </main>
+        </div>
+    </div>
+    </div> <!-- Close #courseApp -->
+
+    <!-- Scripts -->
+    <script>
+        // Access Protection Logic
+        const VALID_KEY = "fashion2026";
+        const authGate = document.getElementById('authGate');
+        const courseApp = document.getElementById('courseApp');
+        const authForm = document.getElementById('authForm');
+        const authKeyInput = document.getElementById('authKeyInput');
+        const authError = document.getElementById('authError');
+
+        function unlockCourse() {
+            if (authGate) authGate.classList.add('hidden');
+            if (courseApp) courseApp.classList.remove('locked-hidden');
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const hashMatch = window.location.hash.match(/key=([^&]+)/);
+        const queryKey = urlParams.get('key') || (hashMatch ? hashMatch[1] : null);
+
+        if (queryKey === VALID_KEY || localStorage.getItem('course_auth_key') === VALID_KEY) {
+            localStorage.setItem('course_auth_key', VALID_KEY);
+            unlockCourse();
+        }
+
+        if (authForm) {
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const val = authKeyInput.value.trim();
+                if (val === VALID_KEY) {
+                    localStorage.setItem('course_auth_key', VALID_KEY);
+                    authError.classList.add('hidden');
+                    unlockCourse();
+                } else {
+                    authError.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Dark Mode Logic
+        const themeToggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Live Search Filter
+        const searchInput = document.getElementById('searchInput');
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) {
+                sections.forEach(s => s.style.display = 'block');
+                navLinks.forEach(n => n.style.display = 'flex');
+                return;
+            }
+
+            sections.forEach(sec => {
+                const text = sec.innerText.toLowerCase();
+                const match = text.includes(query);
+                sec.style.display = match ? 'block' : 'none';
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                const targetSec = document.getElementById(href);
+                if (targetSec && targetSec.style.display !== 'none') {
+                    link.style.display = 'flex';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        });
+
+        // Scrollspy for active nav link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const sectionTop = sec.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = sec.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

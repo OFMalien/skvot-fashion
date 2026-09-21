@@ -1,0 +1,287 @@
+{
+  "course": "Великий курс про фешн (Skvot)",
+  "url": "https://lms.skvot.io/course/5417",
+  "period": "10 червня - 26 серпня, 2026",
+  "collected": "2026-09-06",
+  "lessons": [
+    {
+      "num": 1,
+      "title": "Концепція та позиціонування",
+      "id": 102546,
+      "homework": "https://lms.skvot.io/course/5417/lesson/102546/homework/53524",
+      "materials": [
+        { "title": "Архетипи брендів", "desc": "Опис від лекторів", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b8022ab30fe957b6bbccd" },
+        { "title": "Шаблон аналізу конкурентів", "desc": "Таблиця для аналізу", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/1-file.xlsx" },
+        { "title": "Аналіз ринку", "desc": "Інструкція", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b80f8a8e7f2b980347b21" },
+        { "title": "Точки контакту бренду з клієнтом", "desc": "Опис від лекторів", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b80e4a920f5f8a14f080c" },
+        { "title": "Бренд платформа", "desc": "Візуалізація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/1-file2.png" },
+        { "title": "Методи аналізу цільової аудиторії", "desc": "Інструкція", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b809295ede62df2373c94" },
+        { "title": "Як сформувати цінності бренду", "desc": "Інструкція", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b8036a375e7cdd8065652" },
+        { "title": "Vogue Runway", "desc": "Корисний ресурс: нові колекції та покази", "type": "link", "href": "https://www.vogue.com/fashion-shows" },
+        { "title": "У чому різниця між брендом та айдентикою", "desc": "Стаття", "type": "link", "href": "https://paket24.com.ua/v-chom-raznitsa-mezhdu-brendom-aydentikoy-i-logotipom/" },
+        { "title": "Приклади призм брендів", "desc": "Brand Identity Prism", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/1-file3.pdf" },
+        { "title": "Lyst Index", "desc": "Інсайти фешн індустрії", "type": "link", "href": "https://www.lyst.com/data/the-lyst-index/" },
+        { "title": "McKinsey Insights (public & social sector)", "desc": "Ресурс зі статистикою та ресерчем", "type": "link", "href": "https://www.mckinsey.com/industries/public-and-social-sector/our-insights" },
+        { "title": "Аналітика Fashion eCommerce у 2021 році", "desc": "Дослідження світового ринку моди", "type": "link", "href": "https://www.datafeedwatch.com/blog/fashion-industry-analysis" },
+        { "title": "State of Fashion (McKinsey x BoF)", "desc": "Звіт про стан модної індустрії", "type": "link", "href": "https://www.mckinsey.com/industries/retail/our-insights/state-of-fashion" },
+        { "title": "З чого починається fashion бренд", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/fashion-39e187705a1b8083aba0d6fdc4f60024" },
+        { "title": "Цільова аудиторія та портрет клієнта", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b800aae41c7705a9b8175" },
+        { "title": "Формування ідеї бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80eea891ccfd778df763" },
+        { "title": "Аналіз конкурентів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80e49fa9e2132d270e41" },
+        { "title": "Унікальність та ціннісна пропозиція", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80819765c22eec0ec567" },
+        { "title": "Позиціонування бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b800aae41c7705a9b8175" },
+        { "title": "Як створювалися великі бренди", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80e0b1dddd5d7171cb02" },
+        { "title": "Створення особистості бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b809dbe8bc0f56b324777" },
+        { "title": "Ніші fashion індустрії", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/fashion-39e187705a1b803a87c8fcd2ff06eda2" },
+        { "title": "Етапи побудови fashion бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/fashion-39e187705a1b804e83bfd56f6139bff6" }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "Фідбек-сесія",
+      "id": 102548,
+      "materials": []
+    },
+    {
+      "num": 3,
+      "title": "Створення бізнес-плану",
+      "id": 102547,
+      "homework": "https://lms.skvot.io/course/5417/lesson/102547/homework/53525",
+      "materials": [
+        { "title": "Бізнес-план (шаблон)", "desc": "Шаблон", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/3-file.xlsx" },
+        { "title": "Фандрейзинг та подача на гранти", "desc": "Конспект лекції", "type": "notion", "href": "https://www.notion.so/34f187705a1b806b916df1d9a83d9fd2" },
+        { "title": "Як підготуватися до написання гарної проєктної заявки?", "desc": "Лекція", "type": "link", "href": "https://www.culturepartnership.eu/ua/publishing/proposal-writing-course/vol-1" },
+        { "title": "Бізнес-план", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b804186fae98b6e1493fc" },
+        { "title": "Етапи створення бізнес-плану", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80a89953decdb506e417" },
+        { "title": "Розрахунок бізнес-плану", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80a99dd1c42ae5e6a0d3" }
+      ]
+    },
+    {
+      "num": 4,
+      "title": "Бонус: Бізнес у fashion",
+      "id": 103453,
+      "materials": [
+        { "title": "Фінансова модель", "desc": "Таблиця", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/4-file.xlsx" }
+      ]
+    },
+    {
+      "num": 5,
+      "title": "Фінанси та юридичні аспекти",
+      "id": 102558,
+      "materials": [
+        { "title": "Собівартість колекції", "desc": "Таблиця для розрахунку", "type": "gsheet", "href": "https://docs.google.com/spreadsheets/d/1-eeFdbtyG0_iTfoe3aMyAlbC8PhTal4P/edit" },
+        { "title": "Собівартість та ціноутворення", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b808ead33e61153272fda" },
+        { "title": "Фінанси для власників брендів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b8084a179f651fff15078" },
+        { "title": "Сценарії, інвестиції та партнерство", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b807dbda6c4c67821ee10" },
+        { "title": "Cash-flow і фінансова дисципліна з першого дня", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Cash-flow-34f187705a1b8000946ed2d21900fd67" },
+        { "title": "Cash-flow (шаблон)", "desc": "Шаблон", "type": "gsheet", "href": "https://docs.google.com/spreadsheets/d/1OuAYrJJcOQydUGcaCVMDGKwT6S8Ff47_eAUpJZpY5-s/edit" },
+        { "title": "Як складати звіт про прибутки та збитки в Excel", "desc": "Стаття", "type": "link", "href": "https://laba.ua/blog/3723-yak-skladaty-zvit-pro-prybutky-ta-zbytky-v-excel" },
+        { "title": "Фінансове моделювання", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80f78f2efad6154c6dac" },
+        { "title": "Фінансові ризики", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b801b977ad9dadf8235c2" },
+        { "title": "Фінансові звіти", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b8038b0d1cdf314fdd4dc" },
+        { "title": "Робота з авторським правом", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b806f95a0fdb940e634f4" },
+        { "title": "Реєстрація бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80818f14d30786d052cc" },
+        { "title": "Промисловий зразок та порушення інтелектуальної власності", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b802bacc9c153d88bfce0" }
+      ]
+    },
+    {
+      "num": 6,
+      "title": "Створення колекції",
+      "id": 102549,
+      "homework": "https://lms.skvot.io/course/5417/lesson/102549/homework/53526",
+      "materials": [
+        { "title": "Морфологічний квадрат Цвіккі", "desc": "Інструмент", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/6-file1.xlsx" },
+        { "title": "Шаблон асортиментної матриці", "desc": "Інструмент", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/6-file2.xlsx" },
+        { "title": "Приклад асортиментної матриці", "desc": "Приклад бренду Shypelyk", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/6-file3.xlsx" },
+        { "title": "WGSN", "desc": "Додатковий ресурс", "type": "link", "href": "https://www.wgsn.com/en" },
+        { "title": "Надивленість із Володимиром Завадюком: базовий софт-скіл для креативника", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/watch?v=qpW8oVLvFn0" },
+        { "title": "Must Have: презентація", "desc": "Презентація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/6-file4.pdf" },
+        { "title": "Як streetwear став всюди wear", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/watch?v=zjDqgRKlkLo" },
+        { "title": "Чим надихались дизайнери кросівок", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/watch?v=X4fwG4XlHYY" },
+        { "title": "Відео-шпаргалка (ескізи колекції)", "desc": "Як швидко та якісно попрацювати над ескізами колекції", "type": "youtube", "href": "https://www.youtube.com/watch?v=jerE7ZHPvYE" },
+        { "title": "Pinterest", "desc": "Тут можна створити мудборд", "type": "link", "href": "https://www.pinterest.com/" },
+        { "title": "Miro", "desc": "Тут можна створити мудборд", "type": "link", "href": "https://miro.com/app/dashboard/" },
+        { "title": "Як шукати ідею колекції", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b8045a0a0f6194d3e71c1" },
+        { "title": "Структура колекції", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80cf8661d0ebb27ae8e3" },
+        { "title": "Асортиментна матриця", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80f39de5e64236fbe146" },
+        { "title": "Створення перших зразків та вибір матеріалів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80ab9fa3cd6df8a19332" },
+        { "title": "Подальша робота з колекцією", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b8074b59dc29b6a03e91e" }
+      ]
+    },
+    {
+      "num": 7,
+      "title": "Фідбек-сесія",
+      "id": 102559,
+      "materials": []
+    },
+    {
+      "num": 8,
+      "title": "Виробництво та підрядники",
+      "id": 102550,
+      "materials": [
+        { "title": "Тематична група швейних виробництв", "desc": "Онлайн ресурс", "type": "link", "href": "https://www.facebook.com/groups/sewingbusiness/" },
+        { "title": "Дослідження текстилю, одягу, шкіри та взуття в умовах повномасштабної війни", "desc": "Стаття", "type": "link", "href": "https://business.diia.gov.ua/analytics/research/Research_textiles_clothing_leatherandfootwear_in_full-scale_war" },
+        { "title": "База швейних фабрик", "desc": "Онлайн ресурс", "type": "link", "href": "https://www.ua-region.com.ua/" },
+        { "title": "Магазин текстилю", "desc": "Онлайн ресурс", "type": "link", "href": "https://tk.ua/" },
+        { "title": "Презентація лекторок", "desc": "Презентація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/8-file.pdf" },
+        { "title": "Власне виробництво та аутсорс", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b806d93aac55aa76cc7c4" },
+        { "title": "Пошук та вибір підрядників", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b800f9a5ddaa02e9fc7f7" },
+        { "title": "Факапи на виробництві", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b808fbf9ecad34a534465" }
+      ]
+    },
+    {
+      "num": 9,
+      "title": "Фідбек-сесія",
+      "id": 102557,
+      "materials": []
+    },
+    {
+      "num": 10,
+      "title": "Фідбек-сесія",
+      "id": 102560,
+      "materials": []
+    },
+    {
+      "num": 11,
+      "title": "Стратегія просування",
+      "id": 102551,
+      "homework": "https://lms.skvot.io/course/5417/lesson/102551/homework/53527",
+      "materials": [
+        { "title": "Маркетингова стратегія (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1WHqzyWKh974rKDoYbq7j4o3aNgycXkjt/view" },
+        { "title": "Шаблон TOV", "desc": "Інструмент", "type": "gsheet", "href": "https://docs.google.com/spreadsheets/d/1JnzJJZwJQ5jMMgjwQPO7pR7Yhap2AWQUGz-sAh0uiME/edit" },
+        { "title": "Зйомки для фешн брендів (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1SFFwx4GEhZYAL_8xpCQuOE_6KeR5UunX/view" },
+        { "title": "Ти + я: навіщо брендам колабитись", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/watch?v=spR15M0hP_8" },
+        { "title": "Як бренди моди змінюють правила гри: від Chanel до GUNIA Project", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/watch?v=lDaORZfnLKg" },
+        { "title": "Як визначити Tone of Voice", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Tone-of-Voice-34f187705a1b807e8534ff9c33c6de1d" },
+        { "title": "Візуальна ідентичність", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b80738e79cb123a539e97" },
+        { "title": "Факапи та чого варто уникати", "desc": "Гайд від лекторів", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b80d4ab5df448abd144bf" },
+        { "title": "Колаборації для фешн брендів (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/11xcNCWfXoyRhGZVHlFBu7TUSSdRUwsvf/view" },
+        { "title": "Співпраця з лідерами думок (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1ImvDblZlARwQESPlBXdu6ZX-agKCQ-BY/view" },
+        { "title": "Комунікаційна стратегія (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1x_OKTJllrfbRWlZj4MpE64ZzbHRfd7av/view" },
+        { "title": "Антикризові комунікації та факапи (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1KThRvnnbGjwoSnDXUL6_5g6ODrD0gBLw/view" },
+        { "title": "Позиціонування бренду та ключові меседжі", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39d187705a1b8061b7a7fffdcc70fdc7" },
+        { "title": "Маркетингова стратегія", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39e187705a1b80d2910ec55004d274e1" },
+        { "title": "Комунікаційна стратегія", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39d187705a1b80f8a14bc2e79c7c6ba7" },
+        { "title": "Робота з медіа", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39d187705a1b8080a189de8413d87ea0" },
+        { "title": "Робота з контентом", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39d187705a1b8015affdc39e5841ccd7" },
+        { "title": "Зйомки для fashion брендів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/fashion-39d187705a1b8097a784cbba3e6e23c1" },
+        { "title": "Колаборації для фешн брендів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b80dab15ec015fae1b454" },
+        { "title": "Івенти та спеціальні проекти бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b8041ab1df1ecfcf64193" },
+        { "title": "Співпраця з лідерами думок", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b802e99c3c4f3f4bc1e2d" },
+        { "title": "Особистий PR лідерів бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/PR-3a2187705a1b8028883eebf8bbaa4545" },
+        { "title": "Аналітика та вимірювання ефективності", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b800db497eb6370d05f83" },
+        { "title": "Репутаційний менеджмент", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b806aa1d1c55cb5070781" },
+        { "title": "Антикризові комунікації та факапи", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b80e2a956ca6331f5b1d2" }
+      ]
+    },
+    {
+      "num": 12,
+      "title": "Фідбек-сесія",
+      "id": 102561,
+      "materials": []
+    },
+    {
+      "num": 13,
+      "title": "Дистрибуція та продажі",
+      "id": 102552,
+      "homework": "https://lms.skvot.io/course/5417/lesson/102552/homework/53528",
+      "materials": [
+        { "title": "Як потрапити на полиці ЦУМ (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1_x0AQhCPpT53iWXcbgGARyXy5KqEtu6t/view" },
+        { "title": "Fashion retailing, marketing, and merchandising", "desc": "Стаття", "type": "link", "href": "https://www.britannica.com/art/fashion-industry/Fashion-retailing-marketing-and-merchandising" },
+        { "title": "Програми лояльності (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1a_klexE7iz0J7R9fd52BmeqJ_MWQZmkl/view" },
+        { "title": "Стан індустрії моди для електронної торгівлі", "desc": "Статистика, тенденції та стратегія", "type": "link", "href": "https://www.shopify.com/enterprise/ecommerce-fashion-industry" },
+        { "title": "Як побудована система продажів у fashion-бренді", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/fashion-34f187705a1b805ab8a9d625c305ebf0" },
+        { "title": "Канали дистрибуції (Ліза Полич)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1f058TtMkeJvnwfz-gTxeTxjo_veq9Ktj/view" },
+        { "title": "B2B та B2C (Полич)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1qG6DSWewMpdO4EyHvBLyZnkUeTZzmYEp/view" },
+        { "title": "E-commerce (Полич)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1CeLBbj-3EX4EvoQB-rIgcKa_asp5jaxN/view" },
+        { "title": "Офлайн та онлайн інструменти продажів (Полич)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1POrqLA5WGIhvvnkC4pV5ECd1NY-bpMgg/view" },
+        { "title": "Офлайн та онлайн інструменти продажів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a2187705a1b80fd9cfcf003b0223c7c" },
+        { "title": "E-commerce", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/E-commerce-3a2187705a1b80b39621c7ab6cdcb73b" },
+        { "title": "Програми лояльності", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b808185b4f85c48b469fd" },
+        { "title": "Як потрапити на полиці ЦУМ", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b80d6bcbadc78ee845905" }
+      ]
+    },
+    {
+      "num": 14,
+      "title": "Вихід на міжнародний ринок",
+      "id": 102553,
+      "materials": [
+        { "title": "Поради щодо пошуку баєрів на європейському ринку одягу", "desc": "Стаття", "type": "link", "href": "https://business.diia.gov.ua/exporters-handbook/items/porady-shchodo-poshuku-baieriv-na-ievropeiskomu-rynku-odiahu" },
+        { "title": "Ринок одягу та взуття ЄС", "desc": "Стаття", "type": "link", "href": "https://business.diia.gov.ua/analytics/research/EU-clothing-and-footwear-market" },
+        { "title": "Як вивести fashion-бренд на міжнародний рівень", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/live/_frnM5t-Fm8" },
+        { "title": "Експорт", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b801faa24d8550aa01a28" },
+        { "title": "Експорт та вихід на міжнародні ринки (презентація)", "desc": "Презентація", "type": "gdrive", "href": "https://drive.google.com/file/d/1u2sBVStokvEIcGgila0beIEW-6yhCu2h/view" },
+        { "title": "Організація показів", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b80678a6ecd74bbcae28d" }
+      ]
+    },
+    {
+      "num": 15,
+      "title": "Фідбек-сесія",
+      "id": 102562,
+      "materials": []
+    },
+    {
+      "num": 16,
+      "title": "Операційний менеджмент",
+      "id": 102554,
+      "materials": [
+        { "title": "Операційна модель і процеси у фешн-бренді", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/34f187705a1b80549a92c742711a4c8d" },
+        { "title": "Формування команди фешн-бренду", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/39d187705a1b805e8169c8af144a5e37" },
+        { "title": "Масштабування команди", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b80398c63ec20ad1b736c" },
+        { "title": "Автоматизація процесів у фешн бізнесі", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b805ab44af9c2bdd284d9" }
+      ]
+    },
+    {
+      "num": 17,
+      "title": "Фідбек-сесія",
+      "id": 102563,
+      "materials": []
+    },
+    {
+      "num": 18,
+      "title": "Тренди в фешн (Sustainability та технології)",
+      "id": 102555,
+      "materials": [
+        { "title": "SMETA (сертифікація)", "desc": "Сертифікація", "type": "link", "href": "https://www.sedex.com/solutions/smeta-audit/" },
+        { "title": "SA8000 (сертифікація)", "desc": "Сертифікація", "type": "link", "href": "https://www.dnv.com/services/sa8000-social-accountability-management-4363/" },
+        { "title": "Fair Trade (сертифікація)", "desc": "Сертифікація", "type": "link", "href": "https://www.fairtrade.net/en/why-fairtrade/how-we-do-it/how-does-the-label-work/how-fairtrade-certification-works.html" },
+        { "title": "Sustainability in fashion (презентація)", "desc": "Презентація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/18-file.pdf" },
+        { "title": "Стовпи сталого розвитку", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b807dbca9ff6d8135dadf" },
+        { "title": "Шлях бренду PLNGNS", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/PLN-GNS-3a3187705a1b8090bc5dd2e67f081426" },
+        { "title": "Революція у плануванні колекцій", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b8081a6f2f3d263026e46" },
+        { "title": "Виробничий процес", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b8054a8d1f5ead3115d0e" },
+        { "title": "Recycling та Upcycling", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Recycling-Upcycling-3a3187705a1b803c9bc2e68d42809ae1" },
+        { "title": "Етичне виробництво", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b808e9246d2bee30f21fc" },
+        { "title": "Прозорість ланцюга постачання", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b8022a88bd73277584552" },
+        { "title": "Greenwashing", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Greenwashing-3a3187705a1b802b82fcc0c1021d884d" },
+        { "title": "Розвиток ринку Sustainable Fashion", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Sustainable-Fashion-3a3187705a1b8026a597ff3317a1c2b7" },
+        { "title": "Тренди майбутнього", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b80f7a7ade5e27282a112" },
+        { "title": "Можливості технологій для Fashion", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Fashion-3a3187705a1b804691c5c5dd08ce5b44" },
+        { "title": "Як отримати інвестиції", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/3a3187705a1b802bbb49cebae35056aa" },
+        { "title": "Digital Product Passport та команда", "desc": "Конспект лекції", "type": "notion", "href": "https://brave-protocol-da0.notion.site/Digital-Product-Passport-3a3187705a1b80b8be34e4e158e35d89" }
+      ]
+    },
+    {
+      "num": 19,
+      "title": "Фідбек-сесія",
+      "id": 102564,
+      "materials": []
+    },
+    {
+      "num": 20,
+      "title": "Бонус: Українська фешн індустрія",
+      "id": 102556,
+      "materials": [
+        { "title": "Rise and Fall: як постають та занепадають модні імперії (Роман Тимофєєв x Skvot)", "desc": "Відкрита лекція skvot", "type": "youtube", "href": "https://www.youtube.com/live/Dx9i5x4eYQk" },
+        { "title": "Історія української моди", "desc": "Презентація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/20-file.pdf" },
+        { "title": "Ukrainian Fashion Week", "desc": "Презентація", "type": "file", "href": "https://dlantsst5xjbh.cloudfront.net/-ua/skvt/fashion-prime/1-strm/20-file2.pdf" }
+      ]
+    },
+    {
+      "num": 21,
+      "title": "Випускний",
+      "id": 105252,
+      "materials": []
+    }
+  ]
+}
